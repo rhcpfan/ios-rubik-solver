@@ -232,6 +232,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-8E-E5y">
                                                         <rect key="frame" x="33" y="33" width="45" height="45"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFirstPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="sqv-eF-tfc"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -247,6 +250,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMd-Os-FAb">
                                                         <rect key="frame" x="34" y="33" width="44" height="45"/>
                                                         <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSecondPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="xDZ-yY-vdd"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -262,6 +268,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-rz-sa5">
                                                         <rect key="frame" x="33" y="33" width="44" height="45"/>
                                                         <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressThirdPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="2Rk-lT-0lF"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -296,6 +305,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiH-tf-upX">
                                                         <rect key="frame" x="33" y="33" width="45" height="44"/>
                                                         <color key="backgroundColor" red="0.047058823529411764" green="0.34901960784313724" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFourthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="GOA-Le-TA7"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -311,6 +323,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-h0-r6c">
                                                         <rect key="frame" x="34" y="33" width="44" height="44"/>
                                                         <color key="backgroundColor" red="0.78431372549019607" green="0.80000000000000004" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFifthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="S2h-aN-4sd"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -326,6 +341,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q6-DX-mKb">
                                                         <rect key="frame" x="33" y="33" width="44" height="44"/>
                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSixthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="fHx-Cz-A1w"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -360,6 +378,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeR-KT-7cF">
                                                         <rect key="frame" x="33" y="33" width="45" height="45"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSeventhPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="E2a-C3-t3H"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -375,6 +396,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgz-e9-p5c">
                                                         <rect key="frame" x="34" y="33" width="44" height="45"/>
                                                         <color key="backgroundColor" red="0.77647058823529413" green="0.32156862745098042" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressEightPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="SuK-LD-7g4"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -390,6 +414,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p17-ue-Bey">
                                                         <rect key="frame" x="33" y="33" width="44" height="45"/>
                                                         <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressNinethPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="Rqz-6C-cya"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -573,9 +600,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="eightPatchButton" destination="Fgz-e9-p5c" id="Orr-eO-OJj"/>
                         <outlet property="faceImageView" destination="eEH-GG-xL6" id="r8u-tS-LMd"/>
                         <outlet property="faceIndexLabel" destination="yOq-8G-9TZ" id="utq-TE-qfb"/>
+                        <outlet property="fifthPatchButton" destination="ffa-h0-r6c" id="fyC-q5-7uY"/>
+                        <outlet property="firstPatchButton" destination="RHv-8E-E5y" id="XUr-eQ-VpY"/>
+                        <outlet property="fourthPatchButton" destination="XiH-tf-upX" id="y7J-vY-lDW"/>
                         <outlet property="nextFaceButton" destination="kKA-37-Eaj" id="47k-vr-kAI"/>
+                        <outlet property="ninethPatchButton" destination="p17-ue-Bey" id="0hg-rN-EwB"/>
+                        <outlet property="secondPatchButton" destination="QMd-Os-FAb" id="gyh-oK-oMx"/>
+                        <outlet property="seventhPatchButton" destination="LeR-KT-7cF" id="WK3-v5-K2G"/>
+                        <outlet property="sixtPatchButton" destination="1q6-DX-mKb" id="1Yt-wr-BNi"/>
+                        <outlet property="thirdPatchButton" destination="DjK-rz-sa5" id="qzN-si-ivF"/>
                         <segue destination="cnD-Qu-lm7" kind="show" identifier="correctionToSolveSegue" id="Iho-1L-Ubf"/>
                     </connections>
                 </viewController>
@@ -610,6 +646,9 @@
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="45"/>
                                 </variation>
+                                <connections>
+                                    <action selector="didPressPreviousButton:" destination="cnD-Qu-lm7" eventType="touchUpInside" id="c93-RI-T18"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-08-n3N">
                                 <rect key="frame" x="246" y="590.5" width="113" height="56.5"/>
@@ -620,6 +659,9 @@
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="45"/>
                                 </variation>
+                                <connections>
+                                    <action selector="didPressNextButton:" destination="cnD-Qu-lm7" eventType="touchUpInside" id="Z1W-yC-Ijy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMG-bY-0qr" userLabel="Next Move Label">
                                 <rect key="frame" x="20" y="489" width="335" height="60"/>
@@ -652,10 +694,16 @@
                             <constraint firstItem="LMG-bY-0qr" firstAttribute="leading" secondItem="1KJ-Js-zAM" secondAttribute="leadingMargin" constant="4" id="ztP-oD-voq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="ndd-08-n3N" id="PlB-jW-QTa"/>
+                        <outlet property="previousButton" destination="gUC-Dd-cbV" id="WwR-rO-Y6M"/>
+                        <outlet property="sceneKitView" destination="8mA-R3-EaK" id="jUx-sm-8bt"/>
+                        <outlet property="solutionLabel" destination="LMG-bY-0qr" id="pXp-bC-b4y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghj-gm-8Ll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="9"/>
+            <point key="canvasLocation" x="2126" y="9"/>
         </scene>
     </scenes>
     <resources>
