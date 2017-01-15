@@ -17,6 +17,8 @@
 		9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD301E2BBD59003BE0C1 /* CubeCaptureViewController.m */; };
 		9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.m */; };
 		9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */; };
+		9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */; };
+		9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCorrectionViewController.m; sourceTree = "<group>"; };
 		9464AD351E2BBD80003BE0C1 /* CubeSolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeSolverViewController.h; sourceTree = "<group>"; };
 		9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubeSolverViewController.m; sourceTree = "<group>"; };
+		9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm.yml"; sourceTree = "<group>"; };
+		9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm-2.yml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 		9464AD3A1E2BBFB5003BE0C1 /* Classifiers */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */,
+				9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */,
 			);
 			path = Classifiers;
 			sourceTree = "<group>";
@@ -247,6 +253,8 @@
 				9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */,
 				9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */,
 				9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */,
+				9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */,
+				9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
