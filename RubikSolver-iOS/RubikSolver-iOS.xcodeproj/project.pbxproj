@@ -14,6 +14,9 @@
 		9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD201E2BB48A003BE0C1 /* Assets.xcassets */; };
 		9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD221E2BB48A003BE0C1 /* LaunchScreen.storyboard */; };
 		9464AD2E1E2BB6FF003BE0C1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */; };
+		9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD301E2BBD59003BE0C1 /* CubeCaptureViewController.m */; };
+		9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.m */; };
+		9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,12 @@
 		9464AD251E2BB48A003BE0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9464AD2C1E2BB6FF003BE0C1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9464AD2F1E2BBD59003BE0C1 /* CubeCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeCaptureViewController.h; sourceTree = "<group>"; };
+		9464AD301E2BBD59003BE0C1 /* CubeCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubeCaptureViewController.m; sourceTree = "<group>"; };
+		9464AD321E2BBD72003BE0C1 /* ColorCorrectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCorrectionViewController.h; sourceTree = "<group>"; };
+		9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCorrectionViewController.m; sourceTree = "<group>"; };
+		9464AD351E2BBD80003BE0C1 /* CubeSolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeSolverViewController.h; sourceTree = "<group>"; };
+		9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CubeSolverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +107,12 @@
 			children = (
 				9464AD2C1E2BB6FF003BE0C1 /* MainViewController.h */,
 				9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */,
+				9464AD2F1E2BBD59003BE0C1 /* CubeCaptureViewController.h */,
+				9464AD301E2BBD59003BE0C1 /* CubeCaptureViewController.m */,
+				9464AD321E2BBD72003BE0C1 /* ColorCorrectionViewController.h */,
+				9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.m */,
+				9464AD351E2BBD80003BE0C1 /* CubeSolverViewController.h */,
+				9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -234,6 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.m in Sources */,
+				9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.m in Sources */,
+				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.m in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
 				9464AD2E1E2BB6FF003BE0C1 /* MainViewController.m in Sources */,
 				9464AD161E2BB48A003BE0C1 /* main.m in Sources */,

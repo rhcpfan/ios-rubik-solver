@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CubeCaptureViewController.h
 //  RubikSolver-iOS
 //
 //  Created by rhcpfan on 15/01/17.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface CubeCaptureViewController : UIViewController
 
 @end
-

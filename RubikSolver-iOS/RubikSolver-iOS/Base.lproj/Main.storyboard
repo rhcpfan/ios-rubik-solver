@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Menu View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="dzB-qH-83T">
             <objects>
-                <viewController id="kZH-y1-jhW" customClass="MainMenuViewController" customModule="RubikSolver_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kZH-y1-jhW" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Lw-Fr-xes"/>
                         <viewControllerLayoutGuide type="bottom" id="O7w-Bn-xYy"/>
@@ -174,17 +174,17 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="u1B-d4-wze" kind="show" id="X9w-Rz-fy2"/>
+                        <segue destination="u1B-d4-wze" kind="show" identifier="captureToCorrectionSegue" id="X9w-Rz-fy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTy-1v-QCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="9"/>
+            <point key="canvasLocation" x="444" y="9"/>
         </scene>
         <!--Color Correction View Controller-->
         <scene sceneID="5Pg-Ee-whP">
             <objects>
-                <viewController id="u1B-d4-wze" customClass="ColorCorrectionViewController" customModule="RubikSolver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="u1B-d4-wze" customClass="ColorCorrectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0nl-RO-lyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="8lx-W0-2QO"/>
@@ -276,7 +276,7 @@
                                         <rect key="frame" x="0.0" y="111" width="334" height="111"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iaq-CH-Wu9" userLabel="First Cell View">
-                                                <rect key="frame" x="0.0" y="0.5" width="111" height="111"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiH-tf-upX">
                                                         <rect key="frame" x="33" y="33" width="45" height="44"/>
@@ -291,7 +291,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSl-Vq-70J" userLabel="Second Cell View">
-                                                <rect key="frame" x="110" y="0.5" width="111" height="111"/>
+                                                <rect key="frame" x="110" y="0.0" width="111" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-h0-r6c">
                                                         <rect key="frame" x="34" y="33" width="44" height="44"/>
@@ -306,7 +306,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrC-3p-D7Q" userLabel="Third Cell View">
-                                                <rect key="frame" x="221" y="0.5" width="111" height="111"/>
+                                                <rect key="frame" x="221" y="0.0" width="111" height="111"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q6-DX-mKb">
                                                         <rect key="frame" x="33" y="33" width="44" height="44"/>
@@ -423,7 +423,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="opF-Nx-EPK">
-                                <rect key="frame" x="21.5" y="447" width="334" height="48"/>
+                                <rect key="frame" x="21" y="447" width="334" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBX-Bs-Mee" userLabel="Red Button">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -561,17 +561,17 @@
                         <outlet property="faceImageView" destination="eEH-GG-xL6" id="r8u-tS-LMd"/>
                         <outlet property="faceIndexLabel" destination="yOq-8G-9TZ" id="utq-TE-qfb"/>
                         <outlet property="nextFaceButton" destination="kKA-37-Eaj" id="47k-vr-kAI"/>
-                        <segue destination="cnD-Qu-lm7" kind="show" id="Iho-1L-Ubf"/>
+                        <segue destination="cnD-Qu-lm7" kind="show" identifier="correctionToSolveSegue" id="Iho-1L-Ubf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFT-c6-sYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="9"/>
+            <point key="canvasLocation" x="1236" y="9"/>
         </scene>
         <!--Cube Solver View Controller-->
         <scene sceneID="FIZ-y5-pTc">
             <objects>
-                <viewController title="Cube Solver View Controller" id="cnD-Qu-lm7" customClass="CubeSolverViewController" customModule="RubikSolver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Cube Solver View Controller" id="cnD-Qu-lm7" customClass="CubeSolverViewController" customModule="RubikSolver_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h1h-af-nAx"/>
                         <viewControllerLayoutGuide type="bottom" id="ezD-fU-tME"/>
@@ -640,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghj-gm-8Ll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2450" y="9"/>
+            <point key="canvasLocation" x="1999" y="9"/>
         </scene>
     </scenes>
     <resources>
