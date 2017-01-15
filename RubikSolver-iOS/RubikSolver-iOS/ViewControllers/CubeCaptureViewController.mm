@@ -96,7 +96,7 @@
     try {
         [_photoCamera stop];
         
-        self.captureButton.hidden = YES;
+        self.captureImageButton.hidden = YES;
         self.acceptButton.hidden = NO;
         self.rejectButton.hidden = NO;
         self.instructionsLabel.text = @"Make sure that the corners are detected properly :)";
@@ -191,7 +191,7 @@
     
     [self.photoCamera start];
     
-    self.captureButton.hidden = NO;
+    self.captureImageButton.hidden = NO;
     self.acceptButton.hidden = YES;
     self.rejectButton.hidden = YES;
 }

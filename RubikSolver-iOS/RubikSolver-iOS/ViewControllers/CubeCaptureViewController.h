@@ -31,9 +31,9 @@
     int photoIndex;
 }
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *cameraImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *overlayImageView;
-@property (weak, nonatomic) IBOutlet UIButton *captureButton;
 @property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;
 
 @property NSMutableArray *computedColorsArray;

@@ -65,7 +65,7 @@
         <!--Cube Capture View Controller-->
         <scene sceneID="fJP-ln-9Jc">
             <objects>
-                <viewController title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" customModule="RubikSolver_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gNT-eZ-qfV"/>
                         <viewControllerLayoutGuide type="bottom" id="kuy-JT-lO3"/>
@@ -102,7 +102,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkY-JJ-zOD" userLabel="Capture Photo Button">
-                                        <rect key="frame" x="309" y="597" width="50" height="50"/>
+                                        <rect key="frame" x="16" y="597" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Mk1-EA-qy4">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -113,27 +113,27 @@
                                         </constraints>
                                         <state key="normal" image="camera-button"/>
                                         <connections>
-                                            <action selector="didPressCaptureImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="X6l-kK-0Va"/>
+                                            <action selector="didPressCaptureImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="FEj-zy-1bs"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77E-Xp-en5">
                                         <rect key="frame" x="115" y="597" width="145" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-ct-KRH" userLabel="Accept Button">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-ct-KRH" userLabel="Accept Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xz2-ct-KRH" secondAttribute="height" multiplier="1:1" id="8PH-b9-usq"/>
                                                 </constraints>
                                                 <state key="normal" image="accept-image"/>
                                                 <connections>
-                                                    <action selector="didPressAcceptImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="zcN-DR-G89"/>
+                                                    <action selector="didPressAcceptImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="huy-ya-JYe"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-D5-htH" userLabel="Reject Button">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbN-D5-htH" userLabel="Reject Button">
                                                 <rect key="frame" x="95" y="0.0" width="50" height="50"/>
                                                 <state key="normal" image="reject-image"/>
                                                 <connections>
-                                                    <action selector="didPressRetakeImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="bqh-b3-6Gf"/>
+                                                    <action selector="didPressRetakeImage:" destination="uBe-qk-XN3" eventType="touchUpInside" id="WYc-9g-4hG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -177,19 +177,18 @@
                             <constraint firstItem="igY-KO-Jpb" firstAttribute="height" secondItem="YgJ-Bj-DBF" secondAttribute="height" id="Oeu-tO-L9a"/>
                             <constraint firstItem="igY-KO-Jpb" firstAttribute="width" secondItem="YgJ-Bj-DBF" secondAttribute="width" id="R0k-sG-l1I"/>
                             <constraint firstItem="igY-KO-Jpb" firstAttribute="centerX" secondItem="YgJ-Bj-DBF" secondAttribute="centerX" id="dMP-vI-gCs"/>
+                            <constraint firstItem="VkY-JJ-zOD" firstAttribute="leading" secondItem="YgJ-Bj-DBF" secondAttribute="leadingMargin" id="kBC-Uo-bya"/>
                             <constraint firstItem="2Iy-Pq-hbO" firstAttribute="centerX" secondItem="YgJ-Bj-DBF" secondAttribute="centerX" id="lae-S7-WkU"/>
                             <constraint firstItem="2Iy-Pq-hbO" firstAttribute="width" secondItem="YgJ-Bj-DBF" secondAttribute="width" id="nYe-X1-RNC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VkY-JJ-zOD" secondAttribute="trailing" id="p83-Dk-3hm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="acceptButton" destination="xz2-ct-KRH" id="UDt-lM-mXt"/>
-                        <outlet property="cameraImageView" destination="2Iy-Pq-hbO" id="CoE-Gz-OyB"/>
-                        <outlet property="captureButton" destination="VkY-JJ-zOD" id="Ssu-iW-ZpB"/>
-                        <outlet property="captureImageButton" destination="VkY-JJ-zOD" id="8e9-vP-Do6"/>
-                        <outlet property="instructionsLabel" destination="IdC-MB-Spa" id="IxI-Q6-epj"/>
-                        <outlet property="overlayImageView" destination="AGA-Jl-DU5" id="kYN-9O-6BD"/>
-                        <outlet property="rejectButton" destination="CbN-D5-htH" id="PUk-mu-Lck"/>
+                        <outlet property="acceptButton" destination="xz2-ct-KRH" id="E77-wH-x9X"/>
+                        <outlet property="cameraImageView" destination="2Iy-Pq-hbO" id="SBy-te-l5B"/>
+                        <outlet property="captureImageButton" destination="VkY-JJ-zOD" id="Nn6-hk-3vw"/>
+                        <outlet property="instructionsLabel" destination="IdC-MB-Spa" id="E1c-Wg-22E"/>
+                        <outlet property="overlayImageView" destination="AGA-Jl-DU5" id="fN3-Lk-cll"/>
+                        <outlet property="rejectButton" destination="CbN-D5-htH" id="wFB-gf-ila"/>
                         <segue destination="u1B-d4-wze" kind="show" identifier="captureToCorrectionSegue" id="X9w-Rz-fy2"/>
                     </connections>
                 </viewController>
@@ -587,7 +586,7 @@
         <!--Cube Solver View Controller-->
         <scene sceneID="FIZ-y5-pTc">
             <objects>
-                <viewController title="Cube Solver View Controller" id="cnD-Qu-lm7" customClass="CubeSolverViewController" customModule="RubikSolver_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Cube Solver View Controller" id="cnD-Qu-lm7" customClass="CubeSolverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h1h-af-nAx"/>
                         <viewControllerLayoutGuide type="bottom" id="ezD-fU-tME"/>
@@ -600,7 +599,7 @@
                                 <rect key="frame" x="-1" y="0.0" width="376" height="467"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUC-Dd-cbV">
-                                <rect key="frame" x="16" y="591" width="113" height="56"/>
+                                <rect key="frame" x="16" y="590.5" width="113" height="56.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gUC-Dd-cbV" secondAttribute="height" multiplier="2:1" id="0l9-7F-UGj"/>
                                 </constraints>
@@ -613,7 +612,7 @@
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-08-n3N">
-                                <rect key="frame" x="246" y="591" width="113" height="56"/>
+                                <rect key="frame" x="246" y="590.5" width="113" height="56.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

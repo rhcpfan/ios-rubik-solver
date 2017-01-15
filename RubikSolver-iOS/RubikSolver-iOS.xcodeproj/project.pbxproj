@@ -22,6 +22,19 @@
 		9464AD441E2BC221003BE0C1 /* guideline-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD431E2BC221003BE0C1 /* guideline-overlay.png */; };
 		9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */; };
 		9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */; };
+		9464AD501E2BC5D1003BE0C1 /* coordcube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */; };
+		9464AD511E2BC5D1003BE0C1 /* cubiecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */; };
+		9464AD521E2BC5D1003BE0C1 /* facecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */; };
+		9464AD531E2BC5D1003BE0C1 /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4E1E2BC5D1003BE0C1 /* search.cpp */; };
+		9464AD661E2BC73F003BE0C1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */; };
+		9464AD671E2BC73F003BE0C1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5E1E2BC73F003BE0C1 /* AssetsLibrary.framework */; };
+		9464AD681E2BC73F003BE0C1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5F1E2BC73F003BE0C1 /* AVFoundation.framework */; };
+		9464AD691E2BC73F003BE0C1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD601E2BC73F003BE0C1 /* CoreGraphics.framework */; };
+		9464AD6A1E2BC73F003BE0C1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD611E2BC73F003BE0C1 /* CoreImage.framework */; };
+		9464AD6B1E2BC73F003BE0C1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD621E2BC73F003BE0C1 /* CoreMedia.framework */; };
+		9464AD6C1E2BC73F003BE0C1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD631E2BC73F003BE0C1 /* CoreVideo.framework */; };
+		9464AD6D1E2BC73F003BE0C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */; };
+		9464AD6E1E2BC73F003BE0C1 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD651E2BC73F003BE0C1 /* SceneKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +64,27 @@
 		9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorDetector.hpp; sourceTree = "<group>"; };
 		9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeBasedCubeDetector.cpp; sourceTree = "<group>"; };
 		9464AD481E2BC266003BE0C1 /* EdgeBasedCubeDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeBasedCubeDetector.hpp; sourceTree = "<group>"; };
+		9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordcube.cpp; sourceTree = "<group>"; };
+		9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubiecube.cpp; sourceTree = "<group>"; };
+		9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = facecube.cpp; sourceTree = "<group>"; };
+		9464AD4E1E2BC5D1003BE0C1 /* search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = search.cpp; sourceTree = "<group>"; };
+		9464AD551E2BC5DE003BE0C1 /* color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
+		9464AD561E2BC5DE003BE0C1 /* coordcube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = coordcube.hpp; sourceTree = "<group>"; };
+		9464AD571E2BC5DE003BE0C1 /* corner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = corner.hpp; sourceTree = "<group>"; };
+		9464AD581E2BC5DE003BE0C1 /* cubiecube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cubiecube.hpp; sourceTree = "<group>"; };
+		9464AD591E2BC5DE003BE0C1 /* edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = edge.hpp; sourceTree = "<group>"; };
+		9464AD5A1E2BC5DE003BE0C1 /* facecube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = facecube.hpp; sourceTree = "<group>"; };
+		9464AD5B1E2BC5DE003BE0C1 /* facelet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = facelet.hpp; sourceTree = "<group>"; };
+		9464AD5C1E2BC5DE003BE0C1 /* search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = search.hpp; sourceTree = "<group>"; };
+		9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9464AD5E1E2BC73F003BE0C1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		9464AD5F1E2BC73F003BE0C1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9464AD601E2BC73F003BE0C1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9464AD611E2BC73F003BE0C1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		9464AD621E2BC73F003BE0C1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9464AD631E2BC73F003BE0C1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9464AD651E2BC73F003BE0C1 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +92,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9464AD661E2BC73F003BE0C1 /* Accelerate.framework in Frameworks */,
+				9464AD671E2BC73F003BE0C1 /* AssetsLibrary.framework in Frameworks */,
+				9464AD681E2BC73F003BE0C1 /* AVFoundation.framework in Frameworks */,
+				9464AD691E2BC73F003BE0C1 /* CoreGraphics.framework in Frameworks */,
+				9464AD6A1E2BC73F003BE0C1 /* CoreImage.framework in Frameworks */,
+				9464AD6B1E2BC73F003BE0C1 /* CoreMedia.framework in Frameworks */,
+				9464AD6C1E2BC73F003BE0C1 /* CoreVideo.framework in Frameworks */,
+				9464AD6D1E2BC73F003BE0C1 /* QuartzCore.framework in Frameworks */,
+				9464AD6E1E2BC73F003BE0C1 /* SceneKit.framework in Frameworks */,
 				4FDC603D1EDCB0E95329C9E2 /* libPods-RubikSolver-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +111,15 @@
 		2F36BE6BAE9C900E67B8EBC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */,
+				9464AD5E1E2BC73F003BE0C1 /* AssetsLibrary.framework */,
+				9464AD5F1E2BC73F003BE0C1 /* AVFoundation.framework */,
+				9464AD601E2BC73F003BE0C1 /* CoreGraphics.framework */,
+				9464AD611E2BC73F003BE0C1 /* CoreImage.framework */,
+				9464AD621E2BC73F003BE0C1 /* CoreMedia.framework */,
+				9464AD631E2BC73F003BE0C1 /* CoreVideo.framework */,
+				9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */,
+				9464AD651E2BC73F003BE0C1 /* SceneKit.framework */,
 				876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */,
 			);
 			name = Frameworks;
@@ -181,6 +233,14 @@
 		9464AD3D1E2BBFF7003BE0C1 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD551E2BC5DE003BE0C1 /* color.hpp */,
+				9464AD561E2BC5DE003BE0C1 /* coordcube.hpp */,
+				9464AD571E2BC5DE003BE0C1 /* corner.hpp */,
+				9464AD581E2BC5DE003BE0C1 /* cubiecube.hpp */,
+				9464AD591E2BC5DE003BE0C1 /* edge.hpp */,
+				9464AD5A1E2BC5DE003BE0C1 /* facecube.hpp */,
+				9464AD5B1E2BC5DE003BE0C1 /* facelet.hpp */,
+				9464AD5C1E2BC5DE003BE0C1 /* search.hpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -188,6 +248,10 @@
 		9464AD3E1E2BBFF7003BE0C1 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */,
+				9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */,
+				9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */,
+				9464AD4E1E2BC5D1003BE0C1 /* search.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -328,6 +392,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.mm in Sources */,
+				9464AD531E2BC5D1003BE0C1 /* search.cpp in Sources */,
+				9464AD521E2BC5D1003BE0C1 /* facecube.cpp in Sources */,
+				9464AD511E2BC5D1003BE0C1 /* cubiecube.cpp in Sources */,
+				9464AD501E2BC5D1003BE0C1 /* coordcube.cpp in Sources */,
 				9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.mm in Sources */,
 				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,

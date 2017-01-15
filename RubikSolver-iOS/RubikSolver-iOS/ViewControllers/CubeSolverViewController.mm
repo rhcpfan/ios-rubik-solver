@@ -6,6 +6,10 @@
 //  Copyright © 2017 HomeApps. All rights reserved.
 //
 
+#ifdef __cplusplus
+#include "search.hpp"
+#endif
+
 #import "CubeSolverViewController.h"
 
 @interface CubeSolverViewController ()
