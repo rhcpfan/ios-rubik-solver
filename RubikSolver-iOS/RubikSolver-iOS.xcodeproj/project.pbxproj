@@ -1,0 +1,405 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4FDC603D1EDCB0E95329C9E2 /* libPods-RubikSolver-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */; };
+		9464AD161E2BB48A003BE0C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD151E2BB48A003BE0C1 /* main.m */; };
+		9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD181E2BB48A003BE0C1 /* AppDelegate.m */; };
+		9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD1D1E2BB48A003BE0C1 /* Main.storyboard */; };
+		9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD201E2BB48A003BE0C1 /* Assets.xcassets */; };
+		9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD221E2BB48A003BE0C1 /* LaunchScreen.storyboard */; };
+		9464AD2E1E2BB6FF003BE0C1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RubikSolver-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9464AD111E2BB48A003BE0C1 /* RubikSolver-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RubikSolver-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9464AD151E2BB48A003BE0C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9464AD171E2BB48A003BE0C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9464AD181E2BB48A003BE0C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9464AD1E1E2BB48A003BE0C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9464AD201E2BB48A003BE0C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9464AD231E2BB48A003BE0C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9464AD251E2BB48A003BE0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9464AD2C1E2BB6FF003BE0C1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9464AD0E1E2BB48A003BE0C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FDC603D1EDCB0E95329C9E2 /* libPods-RubikSolver-iOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F36BE6BAE9C900E67B8EBC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9464AD081E2BB48A003BE0C1 = {
+			isa = PBXGroup;
+			children = (
+				9464AD131E2BB48A003BE0C1 /* RubikSolver-iOS */,
+				9464AD121E2BB48A003BE0C1 /* Products */,
+				ADA59EC0CABC19AF1E2EE4EC /* Pods */,
+				2F36BE6BAE9C900E67B8EBC3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9464AD121E2BB48A003BE0C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9464AD111E2BB48A003BE0C1 /* RubikSolver-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9464AD131E2BB48A003BE0C1 /* RubikSolver-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				9464AD2B1E2BB6FF003BE0C1 /* ViewControllers */,
+				9464AD171E2BB48A003BE0C1 /* AppDelegate.h */,
+				9464AD181E2BB48A003BE0C1 /* AppDelegate.m */,
+				9464AD1D1E2BB48A003BE0C1 /* Main.storyboard */,
+				9464AD201E2BB48A003BE0C1 /* Assets.xcassets */,
+				9464AD221E2BB48A003BE0C1 /* LaunchScreen.storyboard */,
+				9464AD251E2BB48A003BE0C1 /* Info.plist */,
+				9464AD141E2BB48A003BE0C1 /* Supporting Files */,
+			);
+			path = "RubikSolver-iOS";
+			sourceTree = "<group>";
+		};
+		9464AD141E2BB48A003BE0C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9464AD151E2BB48A003BE0C1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9464AD2B1E2BB6FF003BE0C1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9464AD2C1E2BB6FF003BE0C1 /* MainViewController.h */,
+				9464AD2D1E2BB6FF003BE0C1 /* MainViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ADA59EC0CABC19AF1E2EE4EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */,
+				4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9464AD101E2BB48A003BE0C1 /* RubikSolver-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9464AD281E2BB48A003BE0C1 /* Build configuration list for PBXNativeTarget "RubikSolver-iOS" */;
+			buildPhases = (
+				F6E2458BBBEF096A60EBBC03 /* [CP] Check Pods Manifest.lock */,
+				9464AD0D1E2BB48A003BE0C1 /* Sources */,
+				9464AD0E1E2BB48A003BE0C1 /* Frameworks */,
+				9464AD0F1E2BB48A003BE0C1 /* Resources */,
+				E4F12D01FB67686C5384314B /* [CP] Embed Pods Frameworks */,
+				F84179103AEEB44B69120E19 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RubikSolver-iOS";
+			productName = "RubikSolver-iOS";
+			productReference = 9464AD111E2BB48A003BE0C1 /* RubikSolver-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9464AD091E2BB48A003BE0C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = HomeApps;
+				TargetAttributes = {
+					9464AD101E2BB48A003BE0C1 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5A8VCRJ637;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9464AD0C1E2BB48A003BE0C1 /* Build configuration list for PBXProject "RubikSolver-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9464AD081E2BB48A003BE0C1;
+			productRefGroup = 9464AD121E2BB48A003BE0C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9464AD101E2BB48A003BE0C1 /* RubikSolver-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9464AD0F1E2BB48A003BE0C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */,
+				9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */,
+				9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4F12D01FB67686C5384314B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6E2458BBBEF096A60EBBC03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F84179103AEEB44B69120E19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9464AD0D1E2BB48A003BE0C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
+				9464AD2E1E2BB6FF003BE0C1 /* MainViewController.m in Sources */,
+				9464AD161E2BB48A003BE0C1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9464AD1D1E2BB48A003BE0C1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9464AD1E1E2BB48A003BE0C1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9464AD221E2BB48A003BE0C1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9464AD231E2BB48A003BE0C1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9464AD261E2BB48A003BE0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9464AD271E2BB48A003BE0C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9464AD291E2BB48A003BE0C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5A8VCRJ637;
+				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9464AD2A1E2BB48A003BE0C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5A8VCRJ637;
+				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9464AD0C1E2BB48A003BE0C1 /* Build configuration list for PBXProject "RubikSolver-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9464AD261E2BB48A003BE0C1 /* Debug */,
+				9464AD271E2BB48A003BE0C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9464AD281E2BB48A003BE0C1 /* Build configuration list for PBXNativeTarget "RubikSolver-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9464AD291E2BB48A003BE0C1 /* Debug */,
+				9464AD2A1E2BB48A003BE0C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9464AD091E2BB48A003BE0C1 /* Project object */;
+}
