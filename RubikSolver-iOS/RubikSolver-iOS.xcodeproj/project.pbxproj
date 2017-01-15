@@ -65,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				9464AD131E2BB48A003BE0C1 /* RubikSolver-iOS */,
+				9464AD381E2BBF57003BE0C1 /* RubikSolver-ImageProcessingEngine */,
+				9464AD391E2BBF5F003BE0C1 /* RubikSolver-KociembaSolver */,
 				9464AD121E2BB48A003BE0C1 /* Products */,
 				ADA59EC0CABC19AF1E2EE4EC /* Pods */,
 				2F36BE6BAE9C900E67B8EBC3 /* Frameworks */,
@@ -115,6 +117,20 @@
 				9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9464AD381E2BBF57003BE0C1 /* RubikSolver-ImageProcessingEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "RubikSolver-ImageProcessingEngine";
+			sourceTree = "<group>";
+		};
+		9464AD391E2BBF5F003BE0C1 /* RubikSolver-KociembaSolver */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "RubikSolver-KociembaSolver";
 			sourceTree = "<group>";
 		};
 		ADA59EC0CABC19AF1E2EE4EC /* Pods */ = {
