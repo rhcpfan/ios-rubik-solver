@@ -20,6 +20,8 @@
 		9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */; };
 		9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */; };
 		9464AD441E2BC221003BE0C1 /* guideline-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD431E2BC221003BE0C1 /* guideline-overlay.png */; };
+		9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */; };
+		9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,10 @@
 		9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm.yml"; sourceTree = "<group>"; };
 		9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm-2.yml"; sourceTree = "<group>"; };
 		9464AD431E2BC221003BE0C1 /* guideline-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideline-overlay.png"; sourceTree = "<group>"; };
+		9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorDetector.cpp; sourceTree = "<group>"; };
+		9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorDetector.hpp; sourceTree = "<group>"; };
+		9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeBasedCubeDetector.cpp; sourceTree = "<group>"; };
+		9464AD481E2BC266003BE0C1 /* EdgeBasedCubeDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeBasedCubeDetector.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,10 @@
 		9464AD3C1E2BBFB5003BE0C1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */,
+				9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */,
+				9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */,
+				9464AD481E2BC266003BE0C1 /* EdgeBasedCubeDetector.hpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -322,7 +332,9 @@
 				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.m in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
 				9464AD2E1E2BB6FF003BE0C1 /* MainViewController.m in Sources */,
+				9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */,
 				9464AD161E2BB48A003BE0C1 /* main.m in Sources */,
+				9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
