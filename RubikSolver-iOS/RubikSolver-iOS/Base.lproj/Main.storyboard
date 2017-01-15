@@ -561,11 +561,86 @@
                         <outlet property="faceImageView" destination="eEH-GG-xL6" id="r8u-tS-LMd"/>
                         <outlet property="faceIndexLabel" destination="yOq-8G-9TZ" id="utq-TE-qfb"/>
                         <outlet property="nextFaceButton" destination="kKA-37-Eaj" id="47k-vr-kAI"/>
+                        <segue destination="cnD-Qu-lm7" kind="show" id="Iho-1L-Ubf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFT-c6-sYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1535" y="9"/>
+        </scene>
+        <!--Cube Solver View Controller-->
+        <scene sceneID="FIZ-y5-pTc">
+            <objects>
+                <viewController title="Cube Solver View Controller" id="cnD-Qu-lm7" customClass="CubeSolverViewController" customModule="RubikSolver" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h1h-af-nAx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ezD-fU-tME"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1KJ-Js-zAM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mA-R3-EaK">
+                                <rect key="frame" x="-1" y="0.0" width="376" height="467"/>
+                            </sceneKitView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUC-Dd-cbV">
+                                <rect key="frame" x="16" y="591" width="113" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gUC-Dd-cbV" secondAttribute="height" multiplier="2:1" id="0l9-7F-UGj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Previous">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="45"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndd-08-n3N">
+                                <rect key="frame" x="246" y="591" width="113" height="56"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="45"/>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMG-bY-0qr" userLabel="Next Move Label">
+                                <rect key="frame" x="20" y="489" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LMG-bY-0qr" secondAttribute="height" multiplier="28:5" id="hzz-Bo-Dsv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="80"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1176470588" green="0.63921568630000003" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LMG-bY-0qr" firstAttribute="top" secondItem="8mA-R3-EaK" secondAttribute="bottom" constant="22" id="06Q-aY-SPH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ndd-08-n3N" secondAttribute="trailing" constant="0.5" id="0Kp-qa-bT7"/>
+                            <constraint firstItem="ndd-08-n3N" firstAttribute="centerY" secondItem="gUC-Dd-cbV" secondAttribute="centerY" id="2cT-h3-7eH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8mA-R3-EaK" secondAttribute="trailing" constant="-15.5" id="8vM-7T-5Hf"/>
+                            <constraint firstItem="gUC-Dd-cbV" firstAttribute="width" secondItem="1KJ-Js-zAM" secondAttribute="width" multiplier="0.3" id="CGr-Gh-fdm"/>
+                            <constraint firstItem="8mA-R3-EaK" firstAttribute="height" secondItem="1KJ-Js-zAM" secondAttribute="height" multiplier="0.7" id="Hff-Xv-Kan"/>
+                            <constraint firstItem="ezD-fU-tME" firstAttribute="top" secondItem="gUC-Dd-cbV" secondAttribute="bottom" constant="20" id="RMt-5R-SdM"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gUC-Dd-cbV" secondAttribute="leading" id="f4g-dd-fb5"/>
+                            <constraint firstItem="8mA-R3-EaK" firstAttribute="top" secondItem="h1h-af-nAx" secondAttribute="bottom" constant="-20" id="ith-YD-XEy"/>
+                            <constraint firstItem="ndd-08-n3N" firstAttribute="width" secondItem="gUC-Dd-cbV" secondAttribute="width" id="nqp-hV-1XM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LMG-bY-0qr" secondAttribute="trailing" constant="4" id="qFQ-Lb-lUv"/>
+                            <constraint firstItem="8mA-R3-EaK" firstAttribute="leading" secondItem="1KJ-Js-zAM" secondAttribute="leadingMargin" constant="-16.5" id="vov-qZ-qGb"/>
+                            <constraint firstItem="ndd-08-n3N" firstAttribute="height" secondItem="gUC-Dd-cbV" secondAttribute="height" id="wbu-6o-uL9"/>
+                            <constraint firstItem="LMG-bY-0qr" firstAttribute="leading" secondItem="1KJ-Js-zAM" secondAttribute="leadingMargin" constant="4" id="ztP-oD-voq"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ghj-gm-8Ll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2450" y="9"/>
         </scene>
     </scenes>
     <resources>
