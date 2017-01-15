@@ -122,6 +122,9 @@
 		9464AD381E2BBF57003BE0C1 /* RubikSolver-ImageProcessingEngine */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD3A1E2BBFB5003BE0C1 /* Classifiers */,
+				9464AD3B1E2BBFB5003BE0C1 /* MaskImages */,
+				9464AD3C1E2BBFB5003BE0C1 /* Source */,
 			);
 			path = "RubikSolver-ImageProcessingEngine";
 			sourceTree = "<group>";
@@ -129,8 +132,45 @@
 		9464AD391E2BBF5F003BE0C1 /* RubikSolver-KociembaSolver */ = {
 			isa = PBXGroup;
 			children = (
+				9464AD3D1E2BBFF7003BE0C1 /* include */,
+				9464AD3E1E2BBFF7003BE0C1 /* src */,
 			);
 			path = "RubikSolver-KociembaSolver";
+			sourceTree = "<group>";
+		};
+		9464AD3A1E2BBFB5003BE0C1 /* Classifiers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classifiers;
+			sourceTree = "<group>";
+		};
+		9464AD3B1E2BBFB5003BE0C1 /* MaskImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MaskImages;
+			sourceTree = "<group>";
+		};
+		9464AD3C1E2BBFB5003BE0C1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		9464AD3D1E2BBFF7003BE0C1 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		9464AD3E1E2BBFF7003BE0C1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		ADA59EC0CABC19AF1E2EE4EC /* Pods */ = {
