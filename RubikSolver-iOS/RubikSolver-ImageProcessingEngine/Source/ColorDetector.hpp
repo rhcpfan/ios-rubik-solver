@@ -1,9 +1,9 @@
 //
-//  EdgeBasedCubeDetector.hpp
+//  ColorDetector.hpp
 //  RubikSolver
 //
-//  Created by Andrei Ciobanu on 11/07/16.
-//  Copyright © 2016 GTeam. All rights reserved.
+//  Created by rhcpfan on 15/01/17.
+//  Copyright © 2017 HomeApps. All rights reserved.
 //
 
 #ifndef ColorDetector_hpp
@@ -17,14 +17,15 @@
 class ColorDetector
 {
 private:
-	std::vector<float> GetPixelFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage, const cv::Point &location);
-	std::vector<std::vector<float>> GetFaceFeatures(const cv::Mat& bgrImage, const cv::Mat& hsvImage);
-	cv::Ptr<cv::ml::SVM> _svmClassifier;
+    std::vector<float> GetPixelFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage, const cv::Point &location);
+    std::vector<std::vector<float>> GetFaceFeatures(const cv::Mat& bgrImage, const cv::Mat& hsvImage);
+    cv::Ptr<cv::ml::SVM> _svmClassifier;
 public:
-	ColorDetector();
-	~ColorDetector();
-
-	void LoadSVMFromFile(const std::string &filePath);
-	std::vector<std::string> RecognizeColors(const cv::Mat &cubeFaceImage);
+    ColorDetector();
+    ~ColorDetector();
+    
+    void LoadSVMFromFile(const std::string &filePath);
+    std::vector<std::string> RecognizeColors(const cv::Mat &cubeFaceImage);
 };
+
 

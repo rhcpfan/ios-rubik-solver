@@ -2,50 +2,55 @@
 //  ColorDetector.cpp
 //  RubikSolver
 //
-//  Created by Andrei Ciobanu on 11/07/16.
-//  Copyright © 2016 GTeam. All rights reserved.
+//  Created by rhcpfan on 15/01/17.
+//  Copyright © 2017 HomeApps. All rights reserved.
 //
+
+#ifdef _WIN32
+#include "stdafx.h"
+#endif
+
 #include "ColorDetector.hpp"
 
 std::vector<float> ColorDetector::GetPixelFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage, const cv::Point &location)
 {
-	std::vector<float> features(6);
-	auto bgrPixel = bgrImage.at<cv::Vec3b>(location);
-	auto hsvPixel = hsvImage.at<cv::Vec3b>(location);
-
-	features[0] = bgrPixel.val[0];
-	features[1] = bgrPixel.val[1];
-	features[2] = bgrPixel.val[2];
-	features[3] = hsvPixel.val[0];
-	features[4] = hsvPixel.val[1];
-	features[5] = hsvPixel.val[2];
-
-	return features;
+    std::vector<float> features(6);
+    auto bgrPixel = bgrImage.at<cv::Vec3b>(location);
+    auto hsvPixel = hsvImage.at<cv::Vec3b>(location);
+    
+    features[0] = bgrPixel.val[0];
+    features[1] = bgrPixel.val[1];
+    features[2] = bgrPixel.val[2];
+    features[3] = hsvPixel.val[0];
+    features[4] = hsvPixel.val[1];
+    features[5] = hsvPixel.val[2];
+    
+    return features;
 }
 
 std::vector<std::vector<float>> ColorDetector::GetFaceFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage)
 {
-	std::vector<std::vector<float>> features;
-	for (int i = 0; i < bgrImage.rows; i++)
-	{
-		for (int j = 0; j < bgrImage.cols; j++)
-		{
-			auto bgrPixel = bgrImage.at<cv::Vec3b>(i, j);
-			auto hsvPixel = hsvImage.at<cv::Vec3b>(i, j);
-
-			features.push_back(std::vector<float>
-			{
-				static_cast<float>(bgrPixel.val[0]),
-				static_cast<float>(bgrPixel.val[1]),
-				static_cast<float>(bgrPixel.val[2]),
-				static_cast<float>(hsvPixel.val[0]),
-				static_cast<float>(hsvPixel.val[1]),
-				static_cast<float>(hsvPixel.val[2])
-			});
-		}
-	}
-
-	return features;
+    std::vector<std::vector<float>> features;
+    for (int i = 0; i < bgrImage.rows; i++)
+    {
+        for (int j = 0; j < bgrImage.cols; j++)
+        {
+            auto bgrPixel = bgrImage.at<cv::Vec3b>(i, j);
+            auto hsvPixel = hsvImage.at<cv::Vec3b>(i, j);
+            
+            features.push_back(std::vector<float>
+                               {
+                                   static_cast<float>(bgrPixel.val[0]),
+                                   static_cast<float>(bgrPixel.val[1]),
+                                   static_cast<float>(bgrPixel.val[2]),
+                                   static_cast<float>(hsvPixel.val[0]),
+                                   static_cast<float>(hsvPixel.val[1]),
+                                   static_cast<float>(hsvPixel.val[2])
+                               });
+        }
+    }
+    
+    return features;
 }
 
 ColorDetector::ColorDetector()
@@ -58,7 +63,7 @@ ColorDetector::~ColorDetector()
 
 void ColorDetector::LoadSVMFromFile(const std::string& filePath)
 {
-	_svmClassifier = cv::Algorithm::load<cv::ml::SVM>(filePath);
+    _svmClassifier = cv::Algorithm::load<cv::ml::SVM>(filePath);
 }
 
 std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceImage)
@@ -71,7 +76,8 @@ std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceI
     cv::line(inputImage, cv::Point(0, inputImage.rows / 3), cv::Point(inputImage.cols, inputImage.rows / 3), cv::Scalar(0, 0, 255), 5);
     cv::line(inputImage, cv::Point(0, (inputImage.rows / 3) * 2), cv::Point(inputImage.cols, (inputImage.rows / 3) * 2), cv::Scalar(0, 0, 255), 5);
     
-    auto sampleSize = 100;
+    auto sampleSize = cubeFaceImage.cols * 0.05;
+    
     auto sampleDistance = (inputImage.cols / 3.0) / 2 - (sampleSize / 2);
     
     // Take samples from the image
@@ -82,8 +88,8 @@ std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceI
     {
         for (size_t i = 0; i < 3; i++)
         {
-            sampleRectangle.x = sampleDistance + (i * inputImage.cols / 3);
-            sampleRectangle.y = sampleDistance + (j * inputImage.rows / 3);
+            sampleRectangle.x = sampleDistance + (i * cubeFaceImage.cols / 3);
+            sampleRectangle.y = sampleDistance + (j * cubeFaceImage.rows / 3);
             cv::rectangle(inputImage, sampleRectangle, cv::Scalar(255, 255, 0), 2);
             
             faceSamples.push_back(cubeFaceImage(sampleRectangle));

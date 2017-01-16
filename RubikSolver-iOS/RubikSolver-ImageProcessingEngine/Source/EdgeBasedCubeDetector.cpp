@@ -2,9 +2,13 @@
 //  EdgeBasedCubeDetector.cpp
 //  RubikSolver
 //
-//  Created by Andrei Ciobanu on 11/07/16.
-//  Copyright © 2016 GTeam. All rights reserved.
+//  Created by rhcpfan on 15/01/17.
+//  Copyright © 2017 HomeApps. All rights reserved.
 //
+
+#ifdef _WIN32
+#include "stdafx.h"
+#endif
 
 #include "EdgeBasedCubeDetector.hpp"
 
@@ -15,26 +19,6 @@ EdgeBasedCubeDetector::EdgeBasedCubeDetector()
 
 EdgeBasedCubeDetector::~EdgeBasedCubeDetector()
 {
-}
-
-void EdgeBasedCubeDetector::SetRegionsMask(const cv::Mat &regionsMask)
-{
-    cv::Mat binaryMask;
-    
-    if (regionsMask.channels() == 4)
-    {
-        cv::cvtColor(regionsMask, binaryMask, CV_RGBA2GRAY);
-    }
-    else if (regionsMask.channels() == 3)
-    {
-        cv::cvtColor(regionsMask, binaryMask, CV_BGR2GRAY);
-    }
-    else
-    {
-        binaryMask = regionsMask.clone();
-    }
-    
-    this->regionsMaskImage = binaryMask;
 }
 
 // Computes the intersection location between the segments of line
@@ -55,16 +39,10 @@ bool EdgeBasedCubeDetector::PointsIntersect(cv::Point2f A1, cv::Point2f B1, cv::
     return true;
 }
 
-cv::Point EdgeBasedCubeDetector::ComputeWeightCenter(const std::vector<cv::Point>& c)
+cv::Point EdgeBasedCubeDetector::ComputeWeightCenterHu(const std::vector<cv::Point>& c)
 {
-    cv::Point wCenter(0, 0);
-    for (size_t cornerIndex = 0; cornerIndex < c.size(); cornerIndex++)
-    {
-        wCenter.x += c[cornerIndex].x;
-        wCenter.y += c[cornerIndex].y;
-    }
-    wCenter /= static_cast<int>(c.size());
-    return wCenter;
+    auto moments = cv::moments(c, false);
+    return cv::Point(moments.m10 / moments.m00, moments.m01 / moments.m00);
 }
 
 double EdgeBasedCubeDetector::ComputeSquareSidesScore(std::vector<cv::Point> rectangleContour)
@@ -88,7 +66,7 @@ bool EdgeBasedCubeDetector::ParallelogramTest(std::vector<cv::Point> rectangleCo
     auto pointOrder = std::vector<int>{ 0, 1, 2, 3, 0, 2, 1, 3, 0, 3, 1, 2 };
     int parallelFound = 0;
     
-    auto wCenter = ComputeWeightCenter(rectangleContour);
+    auto wCenter = ComputeWeightCenterHu(rectangleContour);
     
     for (size_t i = 0; i < pointOrder.size(); i += 4)
     {
@@ -131,22 +109,22 @@ void EdgeBasedCubeDetector::ExtractTopFaceCorners(const std::vector<std::vector<
     auto leftSidePoint = cv::Point(0, 255);
     
     auto leftFace = *std::min_element(faceRegions.begin(), faceRegions.end(), [&](std::vector<cv::Point> a, std::vector<cv::Point> b)
-    {
-        return (cv::norm(ComputeWeightCenter(a) - leftSidePoint) < cv::norm(ComputeWeightCenter(b) - leftSidePoint));
-    });
+                                      {
+                                          return (cv::norm(ComputeWeightCenterHu(a) - leftSidePoint) < cv::norm(ComputeWeightCenterHu(b) - leftSidePoint));
+                                      });
     auto rightFace = *std::min_element(faceRegions.begin(), faceRegions.end(), [&](std::vector<cv::Point> a, std::vector<cv::Point> b)
-    {
-        return (cv::norm(ComputeWeightCenter(a) - rightSidePoint) < cv::norm(ComputeWeightCenter(b) - rightSidePoint));
-    });
+                                       {
+                                           return (cv::norm(ComputeWeightCenterHu(a) - rightSidePoint) < cv::norm(ComputeWeightCenterHu(b) - rightSidePoint));
+                                       });
     auto topFace = *std::min_element(faceRegions.begin(), faceRegions.end(), [&](std::vector<cv::Point> a, std::vector<cv::Point> b)
-    {
-        return (cv::norm(ComputeWeightCenter(a) - bottomPoint) > cv::norm(ComputeWeightCenter(b) - bottomPoint));
-    });
+                                     {
+                                         return (cv::norm(ComputeWeightCenterHu(a) - bottomPoint) > cv::norm(ComputeWeightCenterHu(b) - bottomPoint));
+                                     });
     auto bottomFace = *std::min_element(faceRegions.begin(), faceRegions.end(), [&](std::vector<cv::Point> a, std::vector<cv::Point> b)
-    {
-        return (cv::norm(ComputeWeightCenter(a) - topPoint) > cv::norm(ComputeWeightCenter(b) - topPoint));
-    });
-
+                                        {
+                                            return (cv::norm(ComputeWeightCenterHu(a) - topPoint) > cv::norm(ComputeWeightCenterHu(b) - topPoint));
+                                        });
+    
     auto topLeftCorner = *std::min_element(leftFace.begin(), leftFace.end(), [&](cv::Point a, cv::Point b) { return a.x < b.x; });
     auto topRightCorner = *std::min_element(topFace.begin(), topFace.end(), [&](cv::Point a, cv::Point b) { return a.y < b.y; });
     auto bottomLeftCorner = *std::min_element(bottomFace.begin(), bottomFace.end(), [&](cv::Point a, cv::Point b) { return a.y > b.y; });
@@ -185,7 +163,7 @@ void EdgeBasedCubeDetector::ExtractLeftFaceCorners(const std::vector<std::vector
             auto topDistance = cv::norm(currentPoint - centerPoint);
             auto bottomDistance = cv::norm(currentPoint - bottomLeftPoint);
             
-            if(leftDistance < leftMinDistance)
+            if (leftDistance < leftMinDistance)
             {
                 leftMinDistance = leftDistance;
                 leftMinDistancePoint = currentPoint;
@@ -309,224 +287,259 @@ void EdgeBasedCubeDetector::BinarizeImage(const cv::Mat &inputImage, cv::Mat &bi
     binaryImage = ~binaryEdges;
 }
 
-void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inputImage, cv::Mat &outputImage, cv::Mat& topFaceImage, cv::Mat& leftFaceImage, cv::Mat & rightFaceImage, bool isFirstThreeFacesImage)
+void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inImage, cv::Mat &outputImage, cv::Mat& topFaceImage, cv::Mat& leftFaceImage, cv::Mat & rightFaceImage, bool isFirstThreeFacesImage)
 {
     // Downscale the image
-    cv::Mat resized_mat = inputImage.clone();
-    cv::resize(inputImage, resized_mat, cv::Size(720, 1280));
+    cv::resize(inImage, this->inputImage, cv::Size(720, 1280));
     
-    outputImage = cv::Mat(resized_mat.rows, resized_mat.cols, CV_8UC3, cv::Scalar::all(0));
-    
-    // Apply dilation (morphological edge detection)
-    cv::Mat dilatedImage;
-    cv::dilate(resized_mat, dilatedImage, cv::Mat(), cv::Point(-1, -1), 3);
-    
-    // The edges are represented by the differences between the original image
-    // and the dilated one
-    cv::Mat edges_mat;
-    cv::absdiff(resized_mat, dilatedImage, edges_mat);
-    
-    // Transform to grayscale by summing up all 3 channels
-    std::vector<cv::Mat> edges_channels;
-    cv::split(edges_mat, edges_channels);
-    cv::Mat binaryEdges = edges_channels[0] + edges_channels[1] + edges_channels[2];
-    
-    // Binarize the image by using a small threshold
-    cv::threshold(binaryEdges, binaryEdges, 25, 255, CV_THRESH_BINARY);
-    cv::erode(binaryEdges, binaryEdges, cv::Mat());
-    cv::dilate(binaryEdges, binaryEdges, cv::Mat());
-    
-    // Invert the edge map (for square detection)
-    binaryEdges = ~binaryEdges;
+    cv::Mat binary_input;
+    this->BinarizeImage(inputImage, binary_input);
     
     // Find all the contours
-    std::vector<std::vector<cv::Point>> contours;
-    cv::findContours(binaryEdges.clone(), contours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-    
-    std::cout << "Total no of contours: " << contours.size() << std::endl;
+    cv::findContours(binary_input.clone(), patchContours, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
     
     // ***************************************************************
     // 1. Filter the contours by the distance to the edge of the image
     // ***************************************************************
-    contours.erase(std::remove_if(std::begin(contours), std::end(contours), [&](std::vector<cv::Point> contour)
-                                  {
-                                      auto wCenter = this->ComputeWeightCenter(contour);
-                                      auto d1 = wCenter.x < 30;
-                                      auto d2 = wCenter.y < 30;
-                                      auto d3 = wCenter.x > resized_mat.cols - 30;
-                                      auto d4 = wCenter.x > resized_mat.rows - 30;
-                                      
-                                      return d1 || d2 || d3 || d4;
-                                  }), std::end(contours));
+    this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterByDistanceToImageEdges, "Distance to image edges");
     
-    std::cout << "After filtering by distance to image border:" << contours.size() << std::endl;
     
-    std::vector<std::vector<cv::Point>> approximatedContours(contours.size());
+    // *********************************************************************
+    // 2. Filter by the shape of the contour (approxPolyDP and area ratio)
+    // *********************************************************************
+    this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterByShape, "Shape");
+    
+    
+    // *********************************************************************
+    // 4. Filter further more by area of the detected squares
+    // *********************************************************************
+    this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterByArea, "Area (upper and lower bounds)");
+    
+    
+    // *********************************************************************
+    // 5. Filter further more by simmilarity between sides
+    // *********************************************************************
+    this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterBySimmilarityBetweenSides, "Simmilarity between sides");
+    
+    
+    // *********************************************************************
+    // 6. Filter further more by parallelism between sides
+    // *********************************************************************
+    this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterByParallelismBetweenSides, "Parallelism between sides");
+    
+    
+    // Declare a binary mask that is supposed to contain only cube patches
+    auto cubeMaskDisplay = cv::Mat(inputImage.rows, inputImage.cols, CV_8UC3, cv::Scalar::all(0));
+    
+    // Draw the cube patches on the mask
+    cv::drawContours(cubeMaskDisplay, patchContours, -1, cv::Scalar(255, 255, 0), CV_FILLED);
+    
+    std::vector<std::vector<cv::Point>> topFaceRegions;
+    std::vector<std::vector<cv::Point>> leftFaceRegions;
+    std::vector<std::vector<cv::Point>> rightFaceRegions;
+    
+    this->SeparatePatchesIntoSides(topFaceRegions, leftFaceRegions, rightFaceRegions);
+    
+    if (topFaceRegions.size() == 0 || leftFaceRegions.size() == 0 || rightFaceRegions.size() == 0)
+    {
+        throw std::out_of_range("Not all sides have been detected. Please retake the picture.");
+    }
+    
+    std::vector<cv::Point2f> topFaceCorners, leftFaceCorners, rightFaceCorners;
+    this->ExtractFaceCorners(topFaceRegions, topFaceCorners, leftFaceRegions, leftFaceCorners, rightFaceRegions, rightFaceCorners, isFirstThreeFacesImage);
+    
+    
+    cv::Size outputFaceImageSize(300, 300);
+    
+    this->ApplyPerspectiveTransform(inputImage, topFaceImage, topFaceCorners, outputFaceImageSize);
+    this->ApplyPerspectiveTransform(inputImage, leftFaceImage, leftFaceCorners, outputFaceImageSize);
+    this->ApplyPerspectiveTransform(inputImage, rightFaceImage, rightFaceCorners, outputFaceImageSize);
+    
+    cv::circle(cubeMaskDisplay, topFaceCorners[0], 15, cv::Scalar(0, 0, 255), -1);
+    cv::circle(cubeMaskDisplay, topFaceCorners[1], 15, cv::Scalar(0, 0, 255), -1);
+    cv::circle(cubeMaskDisplay, topFaceCorners[2], 15, cv::Scalar(0, 0, 255), -1);
+    cv::circle(cubeMaskDisplay, topFaceCorners[3], 15, cv::Scalar(0, 0, 255), -1);
+    
+    cv::circle(cubeMaskDisplay, leftFaceCorners[0], 15, cv::Scalar(0, 255, 0), -1);
+    cv::circle(cubeMaskDisplay, leftFaceCorners[1], 15, cv::Scalar(0, 255, 0), -1);
+    cv::circle(cubeMaskDisplay, leftFaceCorners[2], 15, cv::Scalar(0, 255, 0), -1);
+    cv::circle(cubeMaskDisplay, leftFaceCorners[3], 15, cv::Scalar(0, 255, 0), -1);
+    
+    cv::circle(cubeMaskDisplay, rightFaceCorners[0], 15, cv::Scalar(255, 0, 0), -1);
+    cv::circle(cubeMaskDisplay, rightFaceCorners[1], 15, cv::Scalar(255, 0, 0), -1);
+    cv::circle(cubeMaskDisplay, rightFaceCorners[2], 15, cv::Scalar(255, 0, 0), -1);
+    cv::circle(cubeMaskDisplay, rightFaceCorners[3], 15, cv::Scalar(255, 0, 0), -1);
+    
+    outputImage = cubeMaskDisplay.clone();
+}
+
+void EdgeBasedCubeDetector::ApplyFilter(EdgeBasedCubeDetector *obj, void(EdgeBasedCubeDetector::*function)(), std::string filterDescription)
+{
+#ifdef DRAW_FILTER_RESULTS
+    std::vector<std::vector<cv::Point>> oldContours = obj->patchContours;
+#endif
+    
+    (obj->*function)();
+    
+#ifdef DRAW_FILTER_RESULTS
+    cv::Mat filterResults = cv::Mat(obj->inputImage.rows, obj->inputImage.cols, CV_8UC3, cv::Scalar::all(0));
+    cv::drawContours(filterResults, oldContours, -1, cv::Scalar(0, 0, 255), CV_FILLED);
+    cv::drawContours(filterResults, patchContours, -1, cv::Scalar(0, 255, 0), CV_FILLED);
+    
+    std::string text = filterDescription;
+    cv::Size textSize = cv::getTextSize(text, CV_FONT_NORMAL, 1, 1, 0);
+    cv::rectangle(filterResults, cv::Rect(cv::Point(20, 20), textSize), cv::Scalar::all(0), -1);
+    cv::putText(filterResults, text, cv::Point(20, 40), CV_FONT_NORMAL, 1, cv::Scalar(0, 255, 255));
+    
+    cv::namedWindow("Filtered", 0);
+    cv::imshow("Filtered", filterResults);
+    cv::waitKey(0);
+#endif
+}
+
+void EdgeBasedCubeDetector::FilterByDistanceToImageEdges()
+{
+    int leftThreshold = 30;
+    int rightThreshold = 30;
+    int topThreshold = 200;
+    int bottomThreshold = 200;
+    
+    patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
+                                       {
+                                           auto wCenter = this->ComputeWeightCenterHu(contour);
+                                           auto d1 = wCenter.x < leftThreshold;
+                                           auto d2 = wCenter.y < topThreshold;
+                                           auto d3 = wCenter.x > inputImage.cols - rightThreshold;
+                                           auto d4 = wCenter.y > inputImage.rows - bottomThreshold;
+                                           
+                                           return d1 || d2 || d3 || d4;
+                                       }), std::end(patchContours));
+}
+
+void EdgeBasedCubeDetector::FilterByShape()
+{
     std::vector<std::vector<cv::Point>> squareContours;
     
     // Approximate the contours through a polygon (DP algorithm)
-    for (size_t i = 0; i < contours.size(); i++)
+    for (size_t i = 0; i < patchContours.size(); i++)
     {
-        auto epsilonParameter = (5.0 / 100.0) * cv::arcLength(contours[i], true);
-        cv::approxPolyDP(contours[i], approximatedContours[i], epsilonParameter, true);
+        auto epsilonParameter = (5.0 / 100.0) * cv::arcLength(patchContours[i], true);
+        cv::approxPolyDP(patchContours[i], patchContours[i], epsilonParameter, true);
     }
     
     // See what contours are simmilar to a rectangle
-    for (size_t i = 0; i < approximatedContours.size(); i++)
+    for (size_t i = 0; i < patchContours.size(); i++)
     {
         // Ignore small areas
-        auto contourArea = cv::contourArea(approximatedContours[i]);
+        auto contourArea = cv::contourArea(patchContours[i]);
         if (contourArea < 200) continue;
         
         // ************************************************************
         // 2. Filter the contours by the number of edges (square -> 4)
         // ************************************************************
-        if (approximatedContours[i].size() == 4)
+        if (patchContours[i].size() == 4)
         {
             // *********************************************************************
             // 3. Filter further more based on shape
             // Take the area of the minimum area rectangle of the contour
             // and compare it to the contour area. Squares should have a high ratio.
             // *********************************************************************
-            auto minAreaRect = cv::minAreaRect(approximatedContours[i]);
-            cv::Point2f rect_points[4];
-            minAreaRect.points(rect_points);
-            
-            auto rectangleArea = minAreaRect.size.area();
-            auto sizeRatio = MIN(contourArea, rectangleArea) / MAX(contourArea, rectangleArea);
+            auto minAreaRect = cv::minAreaRect(patchContours[i]);
+            auto minAreaRectArea = minAreaRect.size.area();
+            auto sizeRatio = MIN(contourArea, minAreaRectArea) / MAX(contourArea, minAreaRectArea);
             
             if (sizeRatio > 0.5)
             {
                 // Draw the contours
                 //cv::circle(outputImage, wCenter, 2, color, -1);
-                squareContours.push_back(approximatedContours[i]);
+                squareContours.push_back(patchContours[i]);
             }
         }
     }
     
-    std::cout << "After filtering by shape:" << squareContours.size() << std::endl;
-    
-    // *********************************************************************
-    // 4. Filter further more by area of the detected squares
-    // *********************************************************************
+    patchContours = squareContours;
+}
+
+void EdgeBasedCubeDetector::FilterByArea()
+{
+    auto upperBound = (2 / 100.0) * inputImage.size().area();
+    auto lowerBound = (0.1 / 100.0) * inputImage.size().area();
     
     //Remove large square contours
-    squareContours.erase(std::remove_if(std::begin(squareContours), std::end(squareContours), [&](std::vector<cv::Point> contour)
-                                        {
-                                            auto cArea = cv::contourArea(contour);
-                                            bool tooBig = cArea > (2 / 100.0) * resized_mat.size().area();
-                                            bool tooSmall = cArea < (0.1 / 100.0) * resized_mat.size().area();
-                                            
-                                            std::cout << cArea << " " << tooBig << " " << tooSmall << std::endl;
-                                            return (tooBig || tooSmall);
-                                        }), std::end(squareContours));
+    patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
+                                       {
+                                           auto cArea = cv::contourArea(contour);
+                                           bool tooBig = cArea > upperBound;
+                                           bool tooSmall = cArea < lowerBound;
+                                           
+                                           return (tooBig || tooSmall);
+                                       }), std::end(patchContours));
+}
+
+void EdgeBasedCubeDetector::FilterBySimmilarityBetweenSides()
+{
+    patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
+                                       {
+                                           auto score = this->ComputeSquareSidesScore(contour);
+                                           return score > 1;
+                                       }), std::end(patchContours));
+}
+
+void EdgeBasedCubeDetector::FilterByParallelismBetweenSides()
+{
+    patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
+                                       {
+                                           auto isParallelogram = this->ParallelogramTest(contour, 100);
+                                           return isParallelogram == false;
+                                       }), std::end(patchContours));
+}
+
+void EdgeBasedCubeDetector::SeparatePatchesIntoSides(std::vector<std::vector<cv::Point>> &topFaceRegions, std::vector<std::vector<cv::Point>> &leftFaceRegions, std::vector<std::vector<cv::Point>> &rightFaceRegions)
+{
+    auto leftSideTwoThirds = cv::Point(0, (int)(inputImage.rows / 2.65));
+    auto rightSideTwoThirds = cv::Point(inputImage.cols, (int)(inputImage.rows / 2.65));
+    auto centerPoint = cv::Point(inputImage.cols / 2, inputImage.rows / 2);
     
-    std::cout << "After filtering by mean area of the detected squares:" << squareContours.size() << std::endl;
+    auto topRegion = std::vector<cv::Point>{
+        cv::Point(0, 0), cv::Point(inputImage.cols, 0),
+        rightSideTwoThirds, centerPoint, leftSideTwoThirds
+    };
     
-    // *********************************************************************
-    // 5. Filter further more by simmilarity between sides
-    // *********************************************************************
-    squareContours.erase(std::remove_if(std::begin(squareContours), std::end(squareContours), [&](std::vector<cv::Point> contour)
-                                        {
-                                            auto score = this->ComputeSquareSidesScore(contour);
-                                            return score > 1;
-                                        }), std::end(squareContours));
+    auto leftRegion = std::vector<cv::Point>{
+        leftSideTwoThirds, centerPoint, cv::Point(inputImage.cols / 2, inputImage.rows), cv::Point(0, inputImage.rows)
+    };
     
-    std::cout << "After filtering by simmilarity between sides:" << squareContours.size() << std::endl;
+    auto rightRegion = std::vector<cv::Point>{
+        rightSideTwoThirds, centerPoint, cv::Point(inputImage.cols / 2, inputImage.rows), cv::Point(inputImage.cols, inputImage.rows)
+    };
     
-    // *********************************************************************
-    // 6. Filter further more by parallelism between sides
-    // *********************************************************************
-    
-    squareContours.erase(std::remove_if(std::begin(squareContours), std::end(squareContours), [&](std::vector<cv::Point> contour)
-                                        {
-                                            auto isParallelogram = this->ParallelogramTest(contour, 100);
-                                            return isParallelogram == false;
-                                        }), std::end(squareContours));
-    
-    std::cout << "After filtering by parallelism between sides:" << squareContours.size() << std::endl;
-    
-    // Declare a binary mask that is supposed to contain only cube patches
-    auto cubeMask = cv::Mat(resized_mat.rows, resized_mat.cols, CV_8UC1, cv::Scalar::all(0));
-    auto cubeMaskDisplay = cv::Mat(resized_mat.rows, resized_mat.cols, CV_8UC3, cv::Scalar::all(0));
-    
-    // Draw the cube patches on the mask
-    cv::drawContours(cubeMask, squareContours, -1, cv::Scalar::all(255), CV_FILLED);
-    
-    // Draw the cube patches on the mask
-    cv::drawContours(cubeMaskDisplay, squareContours, -1, cv::Scalar(255, 255, 0), CV_FILLED);
-    
-    std::vector<std::vector<cv::Point>> regionContours;
-    cv::findContours(this->regionsMaskImage.clone(), regionContours, CV_RETR_CCOMP, CV_CHAIN_APPROX_TC89_KCOS);
-    
-    auto topRegion = regionContours[2];
-    auto leftRegion = regionContours[1];
-    auto rightRegion = regionContours[0];
-    
-    std::vector<std::vector<cv::Point>> topFaceRegions;
-    std::vector<std::vector<cv::Point>> leftFaceRegions;
-    std::vector<std::vector<cv::Point>> rightFaceRegions;
-    
-    for (size_t cIndex = 0; cIndex < squareContours.size(); cIndex++)
+    for (auto patch : patchContours)
     {
         // Compute the weight center
-        cv::Point wCenter(0, 0);
-        for (size_t cornerIndex = 0; cornerIndex < squareContours[cIndex].size(); cornerIndex++)
-        {
-            wCenter.x += squareContours[cIndex][cornerIndex].x;
-            wCenter.y += squareContours[cIndex][cornerIndex].y;
-        }
-        wCenter /= static_cast<double>(squareContours[cIndex].size());
+        cv::Point wCenter = this->ComputeWeightCenterHu(patch);
         
-        auto pointIsTop = cv::pointPolygonTest(topRegion, wCenter, false);
-        
-        if (pointIsTop >= 0)
+        if (cv::pointPolygonTest(topRegion, wCenter, false) >= 0)
         {
-            topFaceRegions.push_back(squareContours[cIndex]);
-            cv::circle(cubeMaskDisplay, wCenter, 5, cv::Scalar(255, 0, 0), -1);
+            topFaceRegions.push_back(patch);
         }
-        else
+        else if (cv::pointPolygonTest(leftRegion, wCenter, false) >= 0)
         {
-            auto pointIsLeft = cv::pointPolygonTest(leftRegion, wCenter, false);
-            if (pointIsLeft >= 0)
-            {
-                leftFaceRegions.push_back(squareContours[cIndex]);
-                cv::circle(cubeMaskDisplay, wCenter, 5, cv::Scalar(0, 255, 255), -1);
-            }
-            else
-            {
-                auto pointIsRight = cv::pointPolygonTest(rightRegion, wCenter, false);
-                if (pointIsRight >= 0)
-                {
-                    rightFaceRegions.push_back(squareContours[cIndex]);
-                    cv::circle(cubeMaskDisplay, wCenter, 5, cv::Scalar(0, 255, 0), -1);
-                }
-                else
-                {
-                    cv::circle(cubeMaskDisplay, wCenter, 5, cv::Scalar(0, 0, 255), -1);
-                }
-            }
+            leftFaceRegions.push_back(patch);
+        }
+        else if (cv::pointPolygonTest(rightRegion, wCenter, false) >= 0)
+        {
+            rightFaceRegions.push_back(patch);
         }
     }
+}
+
+void EdgeBasedCubeDetector::ExtractFaceCorners(std::vector<std::vector<cv::Point>> topFaceRegions, std::vector<cv::Point2f>& topFaceCorners, std::vector<std::vector<cv::Point>> leftFaceRegions, std::vector<cv::Point2f>& leftFaceCorners, std::vector<std::vector<cv::Point>> rightFaceRegions, std::vector<cv::Point2f>& rightFaceCorners, bool isFirstThreeFacesImage)
+{
+    this->ExtractTopFaceCorners(topFaceRegions, inputImage.size(), topFaceCorners);
+    this->ExtractLeftFaceCorners(leftFaceRegions, inputImage.size(), leftFaceCorners);
+    this->ExtractRightFaceCorners(rightFaceRegions, inputImage.size(), rightFaceCorners);
     
-    if(topFaceRegions.size() == 0 || leftFaceRegions.size() == 0 || rightFaceRegions.size() == 0)
-    {
-        throw std::out_of_range("Not all sides have been detected. Please retake the picture.");
-    }
-    
-    std::vector<cv::Point2f> topFaceCorners, leftFaceCorners, rightFaceCorners;
-    this->ExtractTopFaceCorners(topFaceRegions, resized_mat.size(), topFaceCorners);
-    this->ExtractLeftFaceCorners(leftFaceRegions, resized_mat.size(), leftFaceCorners);
-    this->ExtractRightFaceCorners(rightFaceRegions, resized_mat.size(), rightFaceCorners);
-    
-    cv::Mat dummyImage = cv::Mat(resized_mat.rows, resized_mat.cols, CV_8UC3, cv::Scalar::all(0));
-    cv::drawContours(dummyImage, rightFaceRegions, -1, cv::Scalar(0, 255, 0), CV_FILLED);
-    for (auto c : rightFaceCorners)
-    {
-        cv::circle(dummyImage, c, 10, cv::Scalar(0, 0, 255), CV_FILLED);
-    }
-    
-    if(!isFirstThreeFacesImage)
+    if (!isFirstThreeFacesImage)
     {
         std::vector<cv::Point2f> rearangedTopFace, rearangedLeftFace, rearangedRightFace;
         rearangedTopFace.push_back(topFaceCorners[1]);
@@ -547,25 +560,4 @@ void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inputImage, cv::Mat &out
         rearangedRightFace.push_back(rightFaceCorners[1]);
         rightFaceCorners = rearangedRightFace;
     }
-    
-    this->ApplyPerspectiveTransform(resized_mat, topFaceImage, topFaceCorners, cv::Size(720, 720));
-    this->ApplyPerspectiveTransform(resized_mat, leftFaceImage, leftFaceCorners, cv::Size(720, 720));
-    this->ApplyPerspectiveTransform(resized_mat, rightFaceImage, rightFaceCorners, cv::Size(720, 720));
-    
-    cv::circle(cubeMaskDisplay, topFaceCorners[0], 15, cv::Scalar(0, 0, 255), -1);
-    cv::circle(cubeMaskDisplay, topFaceCorners[1], 15, cv::Scalar(0, 0, 255), -1);
-    cv::circle(cubeMaskDisplay, topFaceCorners[2], 15, cv::Scalar(0, 0, 255), -1);
-    cv::circle(cubeMaskDisplay, topFaceCorners[3], 15, cv::Scalar(0, 0, 255), -1);
-    
-    cv::circle(cubeMaskDisplay, leftFaceCorners[0], 15, cv::Scalar(0, 255, 0), -1);
-    cv::circle(cubeMaskDisplay, leftFaceCorners[1], 15, cv::Scalar(0, 255, 0), -1);
-    cv::circle(cubeMaskDisplay, leftFaceCorners[2], 15, cv::Scalar(0, 255, 0), -1);
-    cv::circle(cubeMaskDisplay, leftFaceCorners[3], 15, cv::Scalar(0, 255, 0), -1);
-    
-    cv::circle(cubeMaskDisplay, rightFaceCorners[0], 15, cv::Scalar(255, 0, 0), -1);
-    cv::circle(cubeMaskDisplay, rightFaceCorners[1], 15, cv::Scalar(255, 0, 0), -1);
-    cv::circle(cubeMaskDisplay, rightFaceCorners[2], 15, cv::Scalar(255, 0, 0), -1);
-    cv::circle(cubeMaskDisplay, rightFaceCorners[3], 15, cv::Scalar(255, 0, 0), -1);
-    
-    outputImage = cubeMaskDisplay.clone();
 }
