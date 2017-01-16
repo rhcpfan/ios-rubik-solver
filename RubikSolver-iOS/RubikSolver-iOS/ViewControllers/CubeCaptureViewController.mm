@@ -34,11 +34,6 @@
     std::string svmClassifierPathStd = std::string([svmClassifierPath UTF8String]);
     _colorDetector.LoadSVMFromFile(svmClassifierPathStd);
     
-    // Load the region mask
-    cv::Mat regionsMask;
-    UIImageToMat([UIImage imageNamed:@"guideline-overlay.png"], regionsMask);
-    _cubeDetector.SetRegionsMask(regionsMask);
-    
     // Alloc the detected colors array
     _acceptedColorsArray = [[NSMutableArray alloc] init];
     
@@ -101,15 +96,17 @@
         self.rejectButton.hidden = NO;
         self.instructionsLabel.text = @"Make sure that the corners are detected properly :)";
         
-        cv::Mat capturedImage;
-        UIImageToMat(image, capturedImage);
+        self.capturedImage = image;
+        
+        cv::Mat capturedImageMat;
+        UIImageToMat(image, capturedImageMat);
         
         // Rotate clockwise 90 degrees (portrait orientation in iOS...)
-        cv::transpose(capturedImage, capturedImage);
-        cv::flip(capturedImage, capturedImage, 1);
+        cv::transpose(capturedImageMat, capturedImageMat);
+        cv::flip(capturedImageMat, capturedImageMat, 1);
         
         cv::Mat bgrImage, outputImage, rgbaImage;
-        cv::cvtColor(capturedImage, bgrImage, CV_RGBA2BGR);
+        cv::cvtColor(capturedImageMat, bgrImage, CV_RGBA2BGR);
         
         _cubeDetector.SegmentFaces(bgrImage, outputImage, topImage, leftImage, rightImage, !didTakeFirstPicture);
         
@@ -179,6 +176,9 @@
 }
 
 - (IBAction)didPressRetakeImage:(UIButton *)sender {
+    
+    NSString* fileName = [NSString stringWithFormat:@"rejected_photo_%d", rand()];
+    [self saveUIImageToDocumentsFolder:self.capturedImage named:fileName];
     
     if(!didTakeFirstPicture) {
         self.instructionsLabel.text = @"Take the picture of the first three faces.";

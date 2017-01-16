@@ -43,6 +43,7 @@
 @property CvPhotoCamera *photoCamera;
 @property EdgeBasedCubeDetector cubeDetector;
 @property ColorDetector colorDetector;
+@property UIImage *capturedImage;
 
 - (void)saveMatImageToDocumentsFolder:(const cv::Mat&)image named:(NSString*)imageName;
 - (void)saveUIImageToDocumentsFolder:(UIImage*)image named:(NSString*)imageName;
