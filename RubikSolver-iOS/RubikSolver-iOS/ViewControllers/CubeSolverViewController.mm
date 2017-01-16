@@ -26,26 +26,6 @@
     [super viewDidLoad];
     
     self.rotationIndex = 0;
-    
-    // create a new scene
-    //self.scene3D = [SCNScene sceneNamed:@"art.scnassets/solver-scene.scn"];
-    
-    //    Y,    G,    Y,    B,    Y,    B,    B,    G,    W,
-    //    G,    Y,    R,    W,    G,    O,    R,    B,    G,
-    //    Y,    Y,    O,    W,    O,    G,    W,    R,    B,
-    //    R,    Y,    O,    R,    W,    W,    W,    B,    O,
-    //    O,    O,    R,    O,    R,    G,    B,    O,    B,
-    //    G,    W,    G,    R,    B,    Y,    W,    R,    Y
-    
-    //    self.allColorsArray = [[NSMutableArray alloc] initWithObjects:
-    //                           @"Y", @"G", @"Y", @"B", @"Y", @"B", @"B", @"G", @"W",
-    //                           @"G", @"Y", @"R", @"W", @"G", @"O", @"R", @"B", @"G",
-    //                           @"Y", @"Y", @"O", @"W", @"O", @"G", @"W", @"R", @"B",
-    //                           @"R", @"Y", @"O", @"R", @"W", @"W", @"W", @"B", @"O",
-    //                           @"O", @"O", @"R", @"O", @"R", @"G", @"B", @"O", @"B",
-    //                           @"G", @"W", @"G", @"R", @"B", @"Y", @"W", @"R", @"Y",
-    //                           nil];
-    
     self.scene3D = [[SCNScene alloc] init];
     
     // create and add a camera to the scene
@@ -81,6 +61,7 @@
     UIColor *backgroundColor = [UIColor colorWithRed:30/255.0 green:163/255.0 blue:215/255.0 alpha:1];
     scnView.backgroundColor = backgroundColor;
     
+    // Add the reflective floor under the cube
     SCNFloor *floor = [[SCNFloor alloc] init];
     NSMutableArray *floorMaterials = [[NSMutableArray alloc] init];
     [floorMaterials addObject:[self getMaterialWithColor:backgroundColor]];
@@ -93,6 +74,7 @@
     
     [self.scene3D.rootNode addChildNode:floorNode];
     
+    // Solve the cube and extract the rotation sequence
     const char * canonicalForm = [self PrepareDataForSolver];
     NSString *solvingSolution = [self SolveCubeWithConfiguration:canonicalForm];
     NSLog(@"CUBE STATE: %s", canonicalForm);
@@ -322,7 +304,6 @@
 
 #pragma mark - Cube Solving
 #pragma mark -
-
 - (const char*) PrepareDataForSolver {
     
     NSString *configuration = @"";

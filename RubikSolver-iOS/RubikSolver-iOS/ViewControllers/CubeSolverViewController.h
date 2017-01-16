@@ -13,7 +13,11 @@
 
 - (void) AddRubiksCubeNodeToScene;
 - (void) SeparateCollorArrayIntoFaces;
+
+
+
 - (const char*) PrepareDataForSolver;
+
 - (NSString*) SolveCubeWithConfiguration: (const char*) cubeConfiguration;
 - (SCNAction*) GetAnimationFromMove: (NSString*) moveString;
 

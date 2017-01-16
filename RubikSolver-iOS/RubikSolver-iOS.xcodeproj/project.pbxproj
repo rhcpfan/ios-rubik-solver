@@ -19,7 +19,6 @@
 		9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.mm */; };
 		9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */; };
 		9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */; };
-		9464AD441E2BC221003BE0C1 /* guideline-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD431E2BC221003BE0C1 /* guideline-overlay.png */; };
 		9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */; };
 		9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */; };
 		9464AD501E2BC5D1003BE0C1 /* coordcube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */; };
@@ -59,7 +58,6 @@
 		9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubeSolverViewController.mm; sourceTree = "<group>"; };
 		9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm.yml"; sourceTree = "<group>"; };
 		9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm-2.yml"; sourceTree = "<group>"; };
-		9464AD431E2BC221003BE0C1 /* guideline-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guideline-overlay.png"; sourceTree = "<group>"; };
 		9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorDetector.cpp; sourceTree = "<group>"; };
 		9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorDetector.hpp; sourceTree = "<group>"; };
 		9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeBasedCubeDetector.cpp; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				9464AD3A1E2BBFB5003BE0C1 /* Classifiers */,
-				9464AD3B1E2BBFB5003BE0C1 /* MaskImages */,
 				9464AD3C1E2BBFB5003BE0C1 /* Source */,
 			);
 			path = "RubikSolver-ImageProcessingEngine";
@@ -209,14 +206,6 @@
 				9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */,
 			);
 			path = Classifiers;
-			sourceTree = "<group>";
-		};
-		9464AD3B1E2BBFB5003BE0C1 /* MaskImages */ = {
-			isa = PBXGroup;
-			children = (
-				9464AD431E2BC221003BE0C1 /* guideline-overlay.png */,
-			);
-			path = MaskImages;
 			sourceTree = "<group>";
 		};
 		9464AD3C1E2BBFB5003BE0C1 /* Source */ = {
@@ -330,7 +319,6 @@
 				9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */,
 				9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */,
 				9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */,
-				9464AD441E2BC221003BE0C1 /* guideline-overlay.png in Resources */,
 				9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */,
 				9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */,
 			);
@@ -525,6 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5A8VCRJ637;
 				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -538,6 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5A8VCRJ637;
 				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
