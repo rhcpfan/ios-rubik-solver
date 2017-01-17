@@ -65,3 +65,9 @@ This is a good project to learn something about **integration of OpenCV into an 
 ### Contributing
 
 All contributions are welcome! Fork it, hack it and submit a pull request :wink:
+
+### License
+
+**iOS-Rubik-Solver** is released under the MIT license. See the LICENSE file for more details.
+
+A slightly modified version of [this C version of the Kociemba solver](https://github.com/muodov/kociemba) was used for generating the solution. As the author states, it is released under the GPL-2 licese.
