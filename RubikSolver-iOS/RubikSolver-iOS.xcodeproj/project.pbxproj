@@ -21,10 +21,6 @@
 		9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */; };
 		9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */; };
 		9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */; };
-		9464AD501E2BC5D1003BE0C1 /* coordcube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */; };
-		9464AD511E2BC5D1003BE0C1 /* cubiecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */; };
-		9464AD521E2BC5D1003BE0C1 /* facecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */; };
-		9464AD531E2BC5D1003BE0C1 /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD4E1E2BC5D1003BE0C1 /* search.cpp */; };
 		9464AD661E2BC73F003BE0C1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */; };
 		9464AD671E2BC73F003BE0C1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5E1E2BC73F003BE0C1 /* AssetsLibrary.framework */; };
 		9464AD681E2BC73F003BE0C1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5F1E2BC73F003BE0C1 /* AVFoundation.framework */; };
@@ -34,6 +30,10 @@
 		9464AD6C1E2BC73F003BE0C1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD631E2BC73F003BE0C1 /* CoreVideo.framework */; };
 		9464AD6D1E2BC73F003BE0C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */; };
 		9464AD6E1E2BC73F003BE0C1 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD651E2BC73F003BE0C1 /* SceneKit.framework */; };
+		948EE13D1E2EE358002C4F78 /* coordcube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948EE1391E2EE358002C4F78 /* coordcube.cpp */; };
+		948EE13E1E2EE358002C4F78 /* cubiecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948EE13A1E2EE358002C4F78 /* cubiecube.cpp */; };
+		948EE13F1E2EE358002C4F78 /* facecube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948EE13B1E2EE358002C4F78 /* facecube.cpp */; };
+		948EE1401E2EE358002C4F78 /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 948EE13C1E2EE358002C4F78 /* search.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,18 +62,6 @@
 		9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorDetector.hpp; sourceTree = "<group>"; };
 		9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeBasedCubeDetector.cpp; sourceTree = "<group>"; };
 		9464AD481E2BC266003BE0C1 /* EdgeBasedCubeDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EdgeBasedCubeDetector.hpp; sourceTree = "<group>"; };
-		9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordcube.cpp; sourceTree = "<group>"; };
-		9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubiecube.cpp; sourceTree = "<group>"; };
-		9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = facecube.cpp; sourceTree = "<group>"; };
-		9464AD4E1E2BC5D1003BE0C1 /* search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = search.cpp; sourceTree = "<group>"; };
-		9464AD551E2BC5DE003BE0C1 /* color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
-		9464AD561E2BC5DE003BE0C1 /* coordcube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = coordcube.hpp; sourceTree = "<group>"; };
-		9464AD571E2BC5DE003BE0C1 /* corner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = corner.hpp; sourceTree = "<group>"; };
-		9464AD581E2BC5DE003BE0C1 /* cubiecube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cubiecube.hpp; sourceTree = "<group>"; };
-		9464AD591E2BC5DE003BE0C1 /* edge.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = edge.hpp; sourceTree = "<group>"; };
-		9464AD5A1E2BC5DE003BE0C1 /* facecube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = facecube.hpp; sourceTree = "<group>"; };
-		9464AD5B1E2BC5DE003BE0C1 /* facelet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = facelet.hpp; sourceTree = "<group>"; };
-		9464AD5C1E2BC5DE003BE0C1 /* search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = search.hpp; sourceTree = "<group>"; };
 		9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9464AD5E1E2BC73F003BE0C1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		9464AD5F1E2BC73F003BE0C1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +72,18 @@
 		9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9464AD651E2BC73F003BE0C1 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		948EE1181E2E6381002C4F78 /* stdafx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
+		948EE1301E2EE358002C4F78 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
+		948EE1311E2EE358002C4F78 /* coordcube.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coordcube.hpp; sourceTree = "<group>"; };
+		948EE1321E2EE358002C4F78 /* corner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = corner.hpp; sourceTree = "<group>"; };
+		948EE1331E2EE358002C4F78 /* cubiecube.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cubiecube.hpp; sourceTree = "<group>"; };
+		948EE1341E2EE358002C4F78 /* edge.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edge.hpp; sourceTree = "<group>"; };
+		948EE1351E2EE358002C4F78 /* facecube.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = facecube.hpp; sourceTree = "<group>"; };
+		948EE1361E2EE358002C4F78 /* facelet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = facelet.hpp; sourceTree = "<group>"; };
+		948EE1371E2EE358002C4F78 /* search.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = search.hpp; sourceTree = "<group>"; };
+		948EE1391E2EE358002C4F78 /* coordcube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordcube.cpp; sourceTree = "<group>"; };
+		948EE13A1E2EE358002C4F78 /* cubiecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubiecube.cpp; sourceTree = "<group>"; };
+		948EE13B1E2EE358002C4F78 /* facecube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = facecube.cpp; sourceTree = "<group>"; };
+		948EE13C1E2EE358002C4F78 /* search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = search.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 			children = (
 				9464AD131E2BB48A003BE0C1 /* RubikSolver-iOS */,
 				9464AD381E2BBF57003BE0C1 /* RubikSolver-ImageProcessingEngine */,
-				9464AD391E2BBF5F003BE0C1 /* RubikSolver-KociembaSolver */,
+				948EE12D1E2EE358002C4F78 /* dependencies */,
 				9464AD121E2BB48A003BE0C1 /* Products */,
 				ADA59EC0CABC19AF1E2EE4EC /* Pods */,
 				2F36BE6BAE9C900E67B8EBC3 /* Frameworks */,
@@ -191,15 +191,6 @@
 			path = "RubikSolver-ImageProcessingEngine";
 			sourceTree = "<group>";
 		};
-		9464AD391E2BBF5F003BE0C1 /* RubikSolver-KociembaSolver */ = {
-			isa = PBXGroup;
-			children = (
-				9464AD3D1E2BBFF7003BE0C1 /* include */,
-				9464AD3E1E2BBFF7003BE0C1 /* src */,
-			);
-			path = "RubikSolver-KociembaSolver";
-			sourceTree = "<group>";
-		};
 		9464AD3A1E2BBFB5003BE0C1 /* Classifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,28 +212,45 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
-		9464AD3D1E2BBFF7003BE0C1 /* include */ = {
+		948EE12D1E2EE358002C4F78 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				9464AD551E2BC5DE003BE0C1 /* color.hpp */,
-				9464AD561E2BC5DE003BE0C1 /* coordcube.hpp */,
-				9464AD571E2BC5DE003BE0C1 /* corner.hpp */,
-				9464AD581E2BC5DE003BE0C1 /* cubiecube.hpp */,
-				9464AD591E2BC5DE003BE0C1 /* edge.hpp */,
-				9464AD5A1E2BC5DE003BE0C1 /* facecube.hpp */,
-				9464AD5B1E2BC5DE003BE0C1 /* facelet.hpp */,
-				9464AD5C1E2BC5DE003BE0C1 /* search.hpp */,
+				948EE12E1E2EE358002C4F78 /* KociembaSolver */,
+			);
+			path = dependencies;
+			sourceTree = "<group>";
+		};
+		948EE12E1E2EE358002C4F78 /* KociembaSolver */ = {
+			isa = PBXGroup;
+			children = (
+				948EE12F1E2EE358002C4F78 /* include */,
+				948EE1381E2EE358002C4F78 /* src */,
+			);
+			path = KociembaSolver;
+			sourceTree = "<group>";
+		};
+		948EE12F1E2EE358002C4F78 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				948EE1301E2EE358002C4F78 /* color.hpp */,
+				948EE1311E2EE358002C4F78 /* coordcube.hpp */,
+				948EE1321E2EE358002C4F78 /* corner.hpp */,
+				948EE1331E2EE358002C4F78 /* cubiecube.hpp */,
+				948EE1341E2EE358002C4F78 /* edge.hpp */,
+				948EE1351E2EE358002C4F78 /* facecube.hpp */,
+				948EE1361E2EE358002C4F78 /* facelet.hpp */,
+				948EE1371E2EE358002C4F78 /* search.hpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		9464AD3E1E2BBFF7003BE0C1 /* src */ = {
+		948EE1381E2EE358002C4F78 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				9464AD4B1E2BC5D1003BE0C1 /* coordcube.cpp */,
-				9464AD4C1E2BC5D1003BE0C1 /* cubiecube.cpp */,
-				9464AD4D1E2BC5D1003BE0C1 /* facecube.cpp */,
-				9464AD4E1E2BC5D1003BE0C1 /* search.cpp */,
+				948EE1391E2EE358002C4F78 /* coordcube.cpp */,
+				948EE13A1E2EE358002C4F78 /* cubiecube.cpp */,
+				948EE13B1E2EE358002C4F78 /* facecube.cpp */,
+				948EE13C1E2EE358002C4F78 /* search.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -382,10 +390,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.mm in Sources */,
-				9464AD531E2BC5D1003BE0C1 /* search.cpp in Sources */,
-				9464AD521E2BC5D1003BE0C1 /* facecube.cpp in Sources */,
-				9464AD511E2BC5D1003BE0C1 /* cubiecube.cpp in Sources */,
-				9464AD501E2BC5D1003BE0C1 /* coordcube.cpp in Sources */,
+				948EE1401E2EE358002C4F78 /* search.cpp in Sources */,
+				948EE13F1E2EE358002C4F78 /* facecube.cpp in Sources */,
+				948EE13E1E2EE358002C4F78 /* cubiecube.cpp in Sources */,
+				948EE13D1E2EE358002C4F78 /* coordcube.cpp in Sources */,
 				9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.mm in Sources */,
 				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
