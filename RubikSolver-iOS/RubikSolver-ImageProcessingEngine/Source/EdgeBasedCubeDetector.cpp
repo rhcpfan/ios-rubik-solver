@@ -6,7 +6,6 @@
 //  Copyright © 2017 HomeApps. All rights reserved.
 //
 
-
 #include "stdafx.h"
 #include "EdgeBasedCubeDetector.hpp"
 

@@ -83,6 +83,7 @@
 		9464AD631E2BC73F003BE0C1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		9464AD641E2BC73F003BE0C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9464AD651E2BC73F003BE0C1 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		948EE1181E2E6381002C4F78 /* stdafx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +216,7 @@
 				9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */,
 				9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */,
 				9464AD481E2BC266003BE0C1 /* EdgeBasedCubeDetector.hpp */,
+				948EE1181E2E6381002C4F78 /* stdafx.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";

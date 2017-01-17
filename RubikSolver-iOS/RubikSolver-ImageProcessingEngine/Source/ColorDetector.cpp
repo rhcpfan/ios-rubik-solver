@@ -6,10 +6,7 @@
 //  Copyright © 2017 HomeApps. All rights reserved.
 //
 
-#ifdef _WIN32
 #include "stdafx.h"
-#endif
-
 #include "ColorDetector.hpp"
 
 std::vector<float> ColorDetector::GetPixelFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage, const cv::Point &location)
