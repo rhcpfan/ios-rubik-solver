@@ -53,3 +53,15 @@ In the next step, we provide a visualisation of the solving process. We generate
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_1.jpg" width="200">
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_2.jpg" width="200">
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_3.jpg" width="200">
+
+A full video demo of the application is available at: https://youtu.be/g3lciIABMNI
+
+### Why open source?
+
+If I would have published _iOSRubikSolver_ to the AppStore, it would have been just another app that would have appeared when you searched for "Magic Cube"... I couldn't have published the app stating that it contains a **Rubik's Cube** since this is a registered trademark (please, do not try :grimacing:). Even if I would have published it, I am 100% percent sure that I couldn't have had the same satisfaction as releasing it in the open. Even if a single person takes this code and learns something new, I consider it as a success.
+
+This is a good project to learn something about **integration of OpenCV into an iOS app written in Objective-C** (hopefully the Swift version will follow soon), **Image Processing using OpenCV** (edge detection, contour detection, patch filtering), some basic **Machine Learning using OpenCV** (color recognition by using a pre-trained linear SVM), **SceneKit** (3D primitives creation, grouping and animations) and some basic iOS application design.
+
+### Contributing
+
+All contributions are welcome! Fork it, hack it and submit a pull request :wink:
