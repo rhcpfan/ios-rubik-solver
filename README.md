@@ -20,15 +20,15 @@ First, make sure you have **CocoaPods** installed. If not, install it by typing 
 
 In order to detect all the six faces of the cube, we need to provide two images. One containing the first three faces, and one containing the last three faces. We capture these photos by aligning the edges of the cube with the red guidelines displayed on screen:
 
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/first_three_faces.PNG" width="200">
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/last_three_faces.PNG" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/first_three_faces.jpg" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/last_three_faces.jpg" width="200">
 
 **IMPORTANT NOTICE: At this moment, the algorithm works if the order of the cube faces is given in the same order as the one in the images above! For the first image: Yellow on top, Green on left and Orange on right. For the second image: White on top, Red on left and Blue on right.**
 
 After pressing the capture button, the flash will trigger (if available) and the photo will be taken. The next step is to process the image and extract all the cubies. Sometimes, the detection can fail, therefore we have to accept or reject the output of the detection algorithm. If we reject the detection, we'll need to capture a new photo (repeat this process until we have a good detection). An example of good and bad detections are presented bellow:
 
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/good_detection.PNG" width="200">
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/bad_detection.PNG" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/good_detection.jpg" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/bad_detection.jpg" width="200">
 
 The next step is to recognize the color of every cubie. In the previous step we have extracted the corners of every face of the cube. For every set of corner points, we apply a perspective transformation on the input image and obtain six separate images containing the cube faces. Some example of such images:
 
@@ -40,7 +40,7 @@ We take some samples from the center of every cubie and for every sample we extr
 
 The recognition can fail also, therefore we provide a way to correct the result of the color recognition:
 
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/color_recognition_screen.PNG" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/color_recognition_screen.jpg" width="200">
 
 If one of the colors was not detected propperly, we select it and tap on the correct color from the bottom toolbar.
 
@@ -50,4 +50,6 @@ Example: `"D2 R' D' F2 B D R2 D2 R' F2 D' F2 U' B2 L2 U2 D R2 U"`, where `D = do
 
 In the next step, we provide a visualisation of the solving process. We generate the cube in 3D by using **SceneKit** and by pressing the "Next" or "Previous" buttons, we apply the rotations provided by the solver, on the cube faces. 
 
-<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene.PNG" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_1.jpg" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_2.jpg" width="200">
+<img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/solving_scene_3.jpg" width="200">
