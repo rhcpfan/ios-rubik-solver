@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "search.hpp"
 
 @interface MainViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    char* solutionArray = ApplyKociembaAlgorithm(strdup("ULURURRLDLDLBRUDBUUUFDFLDBRBUFBDDDRFLUBDLFBRLFFBFBLRFR"), 24, 1000, 0, "cache");
+    NSLog(@"Solution: %@", [NSString stringWithUTF8String:solutionArray]);
 }
 
 
