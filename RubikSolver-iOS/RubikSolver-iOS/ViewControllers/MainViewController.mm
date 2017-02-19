@@ -65,10 +65,21 @@
             // init picker
             CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
             
-            
-            picker.showsEmptyAlbums = NO;
             // set delegate
             picker.delegate = self;
+            
+            // set default album (Camera Roll)
+            picker.defaultAssetCollection = PHAssetCollectionSubtypeSmartAlbumUserLibrary;
+            
+            // to show selection order
+            picker.showsSelectionIndex = YES;
+            
+            // create options for fetching photo only
+            PHFetchOptions *fetchOptions = [PHFetchOptions new];
+            fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeImage];
+            
+            // assign options
+            picker.assetsFetchOptions = fetchOptions;
             
             // Optionally present picker as a form sheet on iPad
             if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
