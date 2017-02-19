@@ -86,6 +86,21 @@
 
 - (void) assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets {
     if(assets.count == 2) {
+        PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
+        requestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+        requestOptions.synchronous = YES;
+        
+        __block UIImage *firstImage, *secondImage;
+        
+        PHImageManager *manager = [PHImageManager defaultManager];
+        [manager requestImageForAsset:assets[0] targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:requestOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            firstImage = result;
+        }];
+        [manager requestImageForAsset:assets[1] targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:requestOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            secondImage = result;
+        }];
+        
         [picker dismissViewControllerAnimated:YES completion:nil];
     } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please select the two images of the cube!" preferredStyle:UIAlertControllerStyleAlert];
