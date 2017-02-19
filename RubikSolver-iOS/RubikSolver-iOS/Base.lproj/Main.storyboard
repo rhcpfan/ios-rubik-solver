@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,14 +23,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71B-JP-XTS">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71B-JP-XTS">
                                 <rect key="frame" x="0.0" y="113" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="71B-JP-XTS" secondAttribute="height" multiplier="1:1" id="xJq-OV-rIs"/>
                                 </constraints>
                                 <state key="normal" image="homescreen-solver-button"/>
                                 <connections>
-                                    <segue destination="uBe-qk-XN3" kind="show" id="HzH-qm-HMf"/>
+                                    <action selector="didPressStartButton:" destination="kZH-y1-jhW" eventType="touchUpInside" id="tAi-od-qoT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the cube to start solving!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-r6-jLM">
@@ -57,15 +56,19 @@
                             <constraint firstItem="71B-JP-XTS" firstAttribute="centerX" secondItem="Nx9-bx-I6a" secondAttribute="centerX" id="wPQ-6R-qb1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="71B-JP-XTS" id="q5y-hi-v0P"/>
+                        <segue destination="uBe-qk-XN3" kind="show" identifier="mainToCubeCaptureSegue" id="EMZ-Go-Uwz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUA-4Z-pb8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="10"/>
+            <point key="canvasLocation" x="-337" y="9"/>
         </scene>
         <!--Cube Capture View Controller-->
         <scene sceneID="fJP-ln-9Jc">
             <objects>
-                <viewController title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cubeCaptureViewControllerID" title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gNT-eZ-qfV"/>
                         <viewControllerLayoutGuide type="bottom" id="kuy-JT-lO3"/>

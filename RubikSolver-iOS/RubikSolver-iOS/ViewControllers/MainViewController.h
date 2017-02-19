@@ -11,5 +11,10 @@
 @interface MainViewController : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+
+
+- (IBAction)didPressStartButton:(UIButton *)sender;
+
 @end
 
