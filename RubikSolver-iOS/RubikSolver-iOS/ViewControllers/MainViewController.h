@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+// Import CTAssetsPickerController for multiple image selection
+#import <CTAssetsPickerController/CTAssetsPickerController.h>
 
+@interface MainViewController : UIViewController <CTAssetsPickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
+- (void) presentMultipleSelectionImagePicker;
 
 - (IBAction)didPressStartButton:(UIButton *)sender;
 

@@ -57,4 +57,41 @@
     
 }
 
+- (void) presentMultipleSelectionImagePicker {
+    // request authorization status
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // init picker
+            CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+            
+            
+            picker.showsEmptyAlbums = NO;
+            // set delegate
+            picker.delegate = self;
+            
+            // Optionally present picker as a form sheet on iPad
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+                picker.modalPresentationStyle = UIModalPresentationFormSheet;
+            
+            // present picker
+            [self presentViewController:picker animated:YES completion:nil];
+        });
+    }];
+}
+
+- (void) assetsPickerControllerDidCancel:(CTAssetsPickerController *)picker {
+    
+}
+
+- (void) assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets {
+    if(assets.count == 2) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Please select the two images of the cube!" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [picker presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 @end
