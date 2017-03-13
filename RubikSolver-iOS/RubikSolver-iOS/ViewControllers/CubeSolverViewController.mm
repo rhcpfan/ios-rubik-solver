@@ -451,9 +451,6 @@
 
 - (void) AnimateEnding {
     
-    
-    
-    
     // Get all the cubes in the scene
     NSArray<SCNNode *> *cubelets = [self.scene3D.rootNode childNodesPassingTest:^BOOL(SCNNode * _Nonnull child, BOOL * _Nonnull stop) {
         return [child.name containsString:@"cubelet"];

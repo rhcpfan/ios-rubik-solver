@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.faceImagesArray = [[NSMutableArray alloc] init];
     
@@ -37,12 +36,13 @@
     // Alloc the detected colors array
     _acceptedColorsArray = [[NSMutableArray alloc] init];
     
-    // Setup the camera parameters
+    // Setup the camera parameters (force flash and 1280x720 resolution)
     _photoCamera = [[CvPhotoCamera alloc] initWithParentView:self.cameraImageView];
     _photoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset1280x720;
     _photoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     _photoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     
+    // Force the camera to use the flash (if available)
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     if ([device isFlashAvailable]) {
         NSError *error = nil;
@@ -70,6 +70,11 @@
 
 #ifdef __cplusplus
 
+/**
+ Saves a cv::Mat image to the documents folder (you can access it via iTunes)
+ @param image The cv::Mat image to be saved
+ @param imageName The name of the image, without extension (ex. "accepted_image")
+ */
 - (void)saveMatImageToDocumentsFolder:(const cv::Mat&)image named:(NSString*)imageName {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -78,6 +83,11 @@
     [imageData writeToFile:appFile atomically:NO];
 }
 
+/**
+ Saves an image of type <b>UIImage</b> to the documents folder (you can access it via iTunes)
+ @param image The cv::Mat image to be saved
+ @param imageName The name of the image, without extension (ex. "accepted_image")
+ */
 - (void)saveUIImageToDocumentsFolder:(UIImage*)image named:(NSString*)imageName {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -86,7 +96,11 @@
     [imageData writeToFile:appFile atomically:NO];
 }
 
-/// Method called after "takePicture" method is called (delegate)
+/**
+ Method invoked after taking a picture (CvPhotoCameraDelegate method)
+ @param photoCamera The CvPhotoCamera object
+ @param image The UIImage captured by the device
+ */
 - (void)photoCamera:(CvPhotoCamera*)photoCamera capturedImage:(UIImage *)image {
     try {
         [_photoCamera stop];
@@ -98,6 +112,7 @@
         
         self.capturedImage = image;
         
+        // Convert the UIImage to a cv::Mat object
         cv::Mat capturedImageMat;
         UIImageToMat(image, capturedImageMat);
         
@@ -105,9 +120,11 @@
         cv::transpose(capturedImageMat, capturedImageMat);
         cv::flip(capturedImageMat, capturedImageMat, 1);
         
+        // Convert the image from RGBA (device color format) to BGR (default OpenCV color format)
         cv::Mat bgrImage, outputImage, rgbaImage;
         cv::cvtColor(capturedImageMat, bgrImage, CV_RGBA2BGR);
         
+        // Apply the segmentation algorithm
         _cubeDetector.SegmentFaces(bgrImage, outputImage, topImage, leftImage, rightImage, !didTakeFirstPicture);
         
         
