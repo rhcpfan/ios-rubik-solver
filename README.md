@@ -36,7 +36,7 @@ The next step is to recognize the color of every cubie. In the previous step we 
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/single_face_2.jpg" width="100">
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/single_face_3.jpg" width="100">
 
-We take some samples from the center of every cubie and for every sample we extract a feature vector that we provide as an input to a pre-trained multiclass **SVM** (Support Vector Machine). The feature vector we extract contains the pixel values in **RGB** and **HSV** space (6 dimensions): **`R G B H S V`**. The output of the SVM is an **int** that represents the recognized color class. 
+We take some samples from the center of every cubie and for every sample we extract a feature vector that we provide as an input to a pre-trained multiclass **SVM** (Support Vector Machine). The feature vector we extract contains the pixel values in **RGB** and **HSV** space (6 dimensions): **`B G R H S V`**. The output of the SVM is an **int** that represents the recognized color class. 
 
 The recognition can fail also, therefore we provide a way to correct the result of the color recognition:
 
