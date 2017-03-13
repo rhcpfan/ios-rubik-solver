@@ -6,6 +6,5 @@ target 'RubikSolver-iOS' do
   # use_frameworks!
   pod 'OpenCV'
   pod 'CTAssetsPickerController'
-  # Pods for RubikSolver-iOS
 
 end
