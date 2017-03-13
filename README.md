@@ -36,7 +36,7 @@ The next step is to recognize the color of every cubie. In the previous step we 
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/single_face_2.jpg" width="100">
 <img src="https://github.com/rhcpfan/ios-rubik-solver/blob/wiki/readme-images/single_face_3.jpg" width="100">
 
-We take some samples from the center of every cubie and for every sample we extract a feature vector that we provide as an input to a pre-trained multiclass **SVM** (Support Vector Machine). The feature vector we extract contains the pixel values in **RGB** and **HSV** space (6 dimensions): **`R G B H S V`**. The output of the SVM is an int that represents the recognized color class. 
+We take some samples from the center of every cubie and for every sample we extract a feature vector that we provide as an input to a pre-trained multiclass **SVM** (Support Vector Machine). The feature vector we extract contains the pixel values in **RGB** and **HSV** space (6 dimensions): **`R G B H S V`**. The output of the SVM is an **int** that represents the recognized color class. 
 
 The recognition can fail also, therefore we provide a way to correct the result of the color recognition:
 
@@ -58,16 +58,18 @@ A full video demo of the application is available at: https://youtu.be/g3lciIABM
 
 ### Roadmap
 
-1. Since the color recognition SVM is pre-trained using pictures of my cube, it would be nice to include a way for the app to learn the colors of another cube (train the liniar SVM on the device).
-2. Any ideas?
+1. Since the color recognition **SVM is pre-trained using pictures of my cube**, it would be nice to include a way for the app to learn the colors of any other cube (train the liniar SVM on the device);
+2. A _Swift_ version of the application;
+3. A way to open and process photos of the cube from the photo gallery;
+4. Any ideas?
 
 
 
 ### Why open source?
 
-If I would have published _iOSRubikSolver_ to the AppStore, it would have been just another app that would have appeared when you searched for "Magic Cube"... I couldn't have published the app stating that it contains a **Rubik's Cube** since this is a registered trademark (please, do not try :grimacing:). Even if I would have published it, I am 100% percent sure that I couldn't have had the same satisfaction as releasing it in the open. Even if a single person takes this code and learns something new, I consider it as a success.
+If I would have published _iOSRubikSolver_ to the AppStore, it would have been just another app that would have appeared when you searched for "Magic Cube"... I couldn't have published the app stating that it contains a **Rubik's Cube** since this is a registered trademark (please, do not try this :grimacing:). Even if I would have published it, I am 100% percent sure that I couldn't have had the same satisfaction as releasing it in the open. Even if a single person takes this code and learns something new, I consider it as a success.
 
-This is a good project to learn something about **integration of OpenCV into an iOS app written in Objective-C** (hopefully the Swift version will follow soon), **Image Processing using OpenCV** (edge detection, contour detection, patch filtering), some basic **Machine Learning using OpenCV** (color recognition by using a pre-trained linear SVM), **SceneKit** (3D primitives creation, grouping and animations) and some basic iOS application design.
+This is a good project to learn something about **integration of OpenCV into an iOS app written in Objective-C** (hopefully the Swift version will follow soon), **Image Processing using OpenCV** (edge detection, contour detection, patch filtering), some **basic Machine Learning using OpenCV** (color recognition by using a pre-trained linear SVM), **SceneKit** (3D primitives creation, grouping and animations) and some basic iOS application design.
 
 ### Contributing
 
