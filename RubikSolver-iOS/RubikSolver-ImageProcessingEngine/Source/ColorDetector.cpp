@@ -9,6 +9,9 @@
 #include "stdafx.h"
 #include "ColorDetector.hpp"
 
+/**
+ Extracts the feature vector for the SVM (6 floats: B G R H S V)
+ */
 std::vector<float> ColorDetector::GetPixelFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage, const cv::Point &location)
 {
     std::vector<float> features(6);
@@ -25,6 +28,7 @@ std::vector<float> ColorDetector::GetPixelFeatures(const cv::Mat &bgrImage, cons
     return features;
 }
 
+/// Returns the array of feature vectors extracted for a sample patch
 std::vector<std::vector<float>> ColorDetector::GetFaceFeatures(const cv::Mat &bgrImage, const cv::Mat &hsvImage)
 {
     std::vector<std::vector<float>> features;
@@ -58,23 +62,32 @@ ColorDetector::~ColorDetector()
 {
 }
 
+/** Loads a pre-trained SVM classifier from a file
+ @param filePath The location of the YML file containing the SVM
+ */
 void ColorDetector::LoadSVMFromFile(const std::string& filePath)
 {
     _svmClassifier = cv::Algorithm::load<cv::ml::SVM>(filePath);
 }
 
+/**
+ Applies the color recognition algorithm
+ @param The cube face image extracted by EdgeBasedCubeDetector::ApplyPerspectiveTransform
+ @return A vector of 9 strings containing the color of each cubie (ex. "Y", "R", "R", "G", "B", "O", "W", "W", "Y")
+ */
 std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceImage)
 {
     cv::Mat inputImage = cubeFaceImage.clone();
     
+    // Draw some helper lines on the image (for visualisation only)
     cv::line(inputImage, cv::Point(inputImage.cols / 3, 0), cv::Point(inputImage.cols / 3, inputImage.rows), cv::Scalar(0, 0, 255), 5);
     cv::line(inputImage, cv::Point((inputImage.cols / 3) * 2, 0), cv::Point((inputImage.cols / 3) * 2, inputImage.rows), cv::Scalar(0, 0, 255), 5);
     
     cv::line(inputImage, cv::Point(0, inputImage.rows / 3), cv::Point(inputImage.cols, inputImage.rows / 3), cv::Scalar(0, 0, 255), 5);
     cv::line(inputImage, cv::Point(0, (inputImage.rows / 3) * 2), cv::Point(inputImage.cols, (inputImage.rows / 3) * 2), cv::Scalar(0, 0, 255), 5);
     
+    // Select the sample size as 5% of the image width
     auto sampleSize = cubeFaceImage.cols * 0.05;
-    
     auto sampleDistance = (inputImage.cols / 3.0) / 2 - (sampleSize / 2);
     
     // Take samples from the image
@@ -93,15 +106,18 @@ std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceI
         }
     }
     
+    // Process each image from faceSamples
     std::vector<std::string> stringResults;
     for (size_t sampleIndex = 0; sampleIndex < faceSamples.size(); sampleIndex++)
     {
+        // Convert the image to HSV for feature extraction
         cv::Mat hsvImage;
         cv::cvtColor(faceSamples[sampleIndex], hsvImage, CV_BGR2HSV_FULL);
         
+        // Get the face features
         auto faceFeatures = GetFaceFeatures(faceSamples[sampleIndex], hsvImage);
+        // Prepare the faceFeatures to be fed to the SVM (every sample on a row, 6 columns, type CV_32f [float])
         cv::Mat detectionData = cv::Mat((int)faceFeatures.size(), 6, CV_32F);
-        
         for (int i = 0; i < faceFeatures.size(); i++)
         {
             for (int featureIndex = 0; featureIndex < 6; featureIndex++)
@@ -110,15 +126,19 @@ std::vector<std::string> ColorDetector::RecognizeColors(const cv::Mat& cubeFaceI
             }
         }
         
+        // Apply the recognition algorithm
         cv::Mat svmResults;
         _svmClassifier->predict(detectionData, svmResults);
         
+        // Compute a histogram based on the recognition results (this counts how many samples from the same cubie have been classified as "Y", "R", etc.)
+        // By using this approach we may elliminate issues coming from illumination, etc.
         cv::Mat svmHistogram;
         int histSize = 6;
         float range[] = { 0, 6 };
         const float* histRange = { range };
         cv::calcHist(&svmResults, 1, 0, cv::Mat(), svmHistogram, 1, &histSize, &histRange, true, false);
         
+        // Take the max value from the histogram (this says that, for example, most of the features have been classified as yellow)
         double maxValue;
         cv::Point maxLocation;
         

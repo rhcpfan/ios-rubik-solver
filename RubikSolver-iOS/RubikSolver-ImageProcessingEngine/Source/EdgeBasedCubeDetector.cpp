@@ -18,8 +18,7 @@ EdgeBasedCubeDetector::~EdgeBasedCubeDetector()
 {
 }
 
-// Computes the intersection location between the segments of line
-// formed by points A1-A2 and B1-B2
+/// Computes the intersection location between the segments of line formed by points A1-A2 and B1-B2
 bool EdgeBasedCubeDetector::PointsIntersect(cv::Point2f A1, cv::Point2f B1, cv::Point2f A2, cv::Point2f B2, cv::Point &intersectionPoint)
 {
     cv::Point2f x = A2 - A1;
@@ -35,12 +34,18 @@ bool EdgeBasedCubeDetector::PointsIntersect(cv::Point2f A1, cv::Point2f B1, cv::
     return true;
 }
 
+/// Computes the weight center of a contour by using cv::moments
 cv::Point EdgeBasedCubeDetector::ComputeWeightCenterHu(const std::vector<cv::Point>& c)
 {
     auto moments = cv::moments(c, false);
     return cv::Point(moments.m10 / moments.m00, moments.m01 / moments.m00);
 }
 
+/**
+ Computes a score that reflects if the 4 sides of a contour are equal (one to each other)
+ @param rectangleContour The array containing the rectangle contour (4 points)
+ @return The score of the contour (double)
+ */
 double EdgeBasedCubeDetector::ComputeSquareSidesScore(std::vector<cv::Point> rectangleContour)
 {
     auto perimeter = cv::arcLength(rectangleContour, true);
@@ -57,6 +62,7 @@ double EdgeBasedCubeDetector::ComputeSquareSidesScore(std::vector<cv::Point> rec
     return 4 - score;
 }
 
+/// A method that returns true if the input contour is simmilar to a parallelogram
 bool EdgeBasedCubeDetector::ParallelogramTest(std::vector<cv::Point> rectangleContour, int distanceThreshold)
 {
     auto pointOrder = std::vector<int>{ 0, 1, 2, 3, 0, 2, 1, 3, 0, 3, 1, 2 };
@@ -95,6 +101,12 @@ bool EdgeBasedCubeDetector::ParallelogramTest(std::vector<cv::Point> rectangleCo
     return false;
 }
 
+/**
+ Extracts the top face corners from an array of regions by computing the distance from a point on the contour of the cubie to a pre-defined point.
+ @param faceRegions An array containing the face regions
+ @param imageSize The size of the input image
+ @param cornerPoints (out) An array with 4 cv::Points that represent the corners of the top face
+ */
 void EdgeBasedCubeDetector::ExtractTopFaceCorners(const std::vector<std::vector<cv::Point>>& faceRegions,
     const cv::Size& imageSize,
     std::vector<cv::Point2f> &cornerPoints)
@@ -133,6 +145,12 @@ void EdgeBasedCubeDetector::ExtractTopFaceCorners(const std::vector<std::vector<
     cornerPoints[3] = bottomLeftCorner;
 }
 
+/**
+ Extracts the left face corners from an array of regions by computing the distance from a point on the contour of the cubie to a pre-defined point.
+ @param faceRegions An array containing the face regions
+ @param imageSize The size of the input image
+ @param cornerPoints (out) An array with 4 cv::Points that represent the corners of the left face
+ */
 void EdgeBasedCubeDetector::ExtractLeftFaceCorners(const std::vector<std::vector<cv::Point>>& faceRegions, const cv::Size& imageSize, std::vector<cv::Point2f>& cornerPoints)
 {
     auto centerPoint = cv::Point(imageSize.width / 2, imageSize.height / 2);
@@ -189,6 +207,12 @@ void EdgeBasedCubeDetector::ExtractLeftFaceCorners(const std::vector<std::vector
     cornerPoints[3] = bottomMinDistancePoint;
 }
 
+/**
+ Extracts the right face corners from an array of regions by computing the distance from a point on the contour of the cubie to a pre-defined point.
+ @param faceRegions An array containing the face regions
+ @param imageSize The size of the input image
+ @param cornerPoints (out) An array with 4 cv::Points that represent the corners of the right face
+ */
 void EdgeBasedCubeDetector::ExtractRightFaceCorners(const std::vector<std::vector<cv::Point>>& faceRegions, const cv::Size& imageSize, std::vector<cv::Point2f>& cornerPoints)
 {
     auto centerPoint = cv::Point(imageSize.width / 2, imageSize.height / 2);
@@ -245,6 +269,13 @@ void EdgeBasedCubeDetector::ExtractRightFaceCorners(const std::vector<std::vecto
     cornerPoints[3] = bottomMinDistancePoint;
 }
 
+/**
+ Applies the perspective correction algorithm from OpenCV.
+ @param inputImage The input image
+ @param outputImage Image containing the face of the cube (corrected)
+ @param inputPoints The control points for the perspective transformation
+ @param outputSize The desired size of the outputImage
+ */
 void EdgeBasedCubeDetector::ApplyPerspectiveTransform(const cv::Mat& inputImage, cv::Mat& outputImage, const std::vector<cv::Point2f>& inputPoints, const cv::Size &outputSize)
 {
     std::vector<cv::Point2f> outputPoints;
@@ -258,9 +289,15 @@ void EdgeBasedCubeDetector::ApplyPerspectiveTransform(const cv::Mat& inputImage,
     cv::warpPerspective(inputImage, outputImage, perspectiveMatrix, outputSize);
 }
 
+/**
+ An algorithm that creates the binary edge map of the input image. The edge extraction is performed by using a morphological edge extraction algorithm (difference between the input image and the same image after applying a morphological dilation operator)
+ 
+ @param inputImage The image to be processed
+ @param binaryImage The output edge map
+ */
 void EdgeBasedCubeDetector::BinarizeImage(const cv::Mat &inputImage, cv::Mat &binaryImage)
 {
-    // Apply dilation (morphological edge detection)
+    // Apply the dilation operator (3X3 mask, 3 iterations)
     cv::Mat dilatedImage;
     cv::dilate(inputImage, dilatedImage, cv::Mat(), cv::Point(-1, -1), 3);
 
@@ -279,15 +316,25 @@ void EdgeBasedCubeDetector::BinarizeImage(const cv::Mat &inputImage, cv::Mat &bi
     cv::erode(binaryEdges, binaryEdges, cv::Mat());
     cv::dilate(binaryEdges, binaryEdges, cv::Mat());
 
-    // Invert the edge map (for square detection)
+    // Invert the edge map in order to have white edges and black background (OpenCV considers white as background)
     binaryImage = ~binaryEdges;
 }
 
+/**
+ Performs the segmentation of the cube faces from a single image
+ @param inImage The input image captured by the device
+ @param outputImage (out) An image containing the detected corners drawn on the input image
+ @param topFaceImage (out) The image of the top face after applying the perspective tranform
+ @param leftFaceImage (out) The image of the left face after applying the perspective tranform
+ @param rightFaceImage (out) The image of the right face after applying the perspective tranform
+ @param isFirstThreeFacesImage A bool flag that tells if this is the first captured image (true) or the second one (false)
+ */
 void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inImage, cv::Mat &outputImage, cv::Mat& topFaceImage, cv::Mat& leftFaceImage, cv::Mat & rightFaceImage, bool isFirstThreeFacesImage)
 {
-    // Downscale the image
+    // Downscale the image (if needed, usually the image should be 1280x720)
     cv::resize(inImage, this->inputImage, cv::Size(720, 1280));
 
+    // Apply the binarization algorithm in order to extract the edge map
     cv::Mat binary_input;
     this->BinarizeImage(inputImage, binary_input);
 
@@ -324,28 +371,34 @@ void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inImage, cv::Mat &output
     this->ApplyFilter(this, &EdgeBasedCubeDetector::FilterByParallelismBetweenSides, "Parallelism between sides");
 
 
-
     std::vector<std::vector<cv::Point>> topFaceRegions;
     std::vector<std::vector<cv::Point>> leftFaceRegions;
     std::vector<std::vector<cv::Point>> rightFaceRegions;
 
+    // Separate all the contours in three regions (sides of the cube): top, left or right
     this->SeparatePatchesIntoSides(topFaceRegions, leftFaceRegions, rightFaceRegions);
 
+    // If one of the faces has no detected contours, throw an error
     if (topFaceRegions.size() == 0 || leftFaceRegions.size() == 0 || rightFaceRegions.size() == 0)
     {
-        throw std::out_of_range("Not all sides have been detected. Please retake the picture.");
+        throw std::out_of_range("Not all sides of the cube have been detected. Please retake the picture.");
     }
 
+    // Extract the face corners (4 points per face)
     std::vector<cv::Point2f> topFaceCorners, leftFaceCorners, rightFaceCorners;
     this->ExtractFaceCorners(topFaceRegions, topFaceCorners, leftFaceRegions, leftFaceCorners, rightFaceRegions, rightFaceCorners, isFirstThreeFacesImage);
 
 
+    // Force the size of the output comming from ApplyPerspectiveTransform to be 300x300
     cv::Size outputFaceImageSize(300, 300);
 
+    // Apply the perspective transformation algorithm to extract the three faces of the cube
     this->ApplyPerspectiveTransform(inputImage, topFaceImage, topFaceCorners, outputFaceImageSize);
     this->ApplyPerspectiveTransform(inputImage, leftFaceImage, leftFaceCorners, outputFaceImageSize);
     this->ApplyPerspectiveTransform(inputImage, rightFaceImage, rightFaceCorners, outputFaceImageSize);
 
+    
+    // Draw the results (corners) on the input image
     cv::circle(inputImage, topFaceCorners[0], 15, cv::Scalar(0, 0, 255), -1);
     cv::circle(inputImage, topFaceCorners[1], 15, cv::Scalar(0, 0, 255), -1);
     cv::circle(inputImage, topFaceCorners[2], 15, cv::Scalar(0, 0, 255), -1);
@@ -364,6 +417,15 @@ void EdgeBasedCubeDetector::SegmentFaces(const cv::Mat& inImage, cv::Mat &output
     outputImage = inputImage;
 }
 
+/**
+ Takes all the contours detected previously and applies a filter on them (given as a parameter). This filter could reduce false-positive detections. 
+ 
+ In this method, a macro is used: DRAW_FILTER_RESULTS. If this macro is defined, the result after applying the filter is displayed on the screen (for debug in desktop environment, NOT iOS!)
+ 
+ @param obj The EdgeBasedCubeDetector object that holds the needed properties (detected contours, input image, etc.)
+ @param function A pointer to a function to be applied as a filter for the detected contours
+ @param filterDescription A short description of the applied filter (to be displayed on screen if DRAW_FILTER_RESULTS is defined)
+ */
 void EdgeBasedCubeDetector::ApplyFilter(EdgeBasedCubeDetector *obj, void(EdgeBasedCubeDetector::*function)(), std::string filterDescription)
 {
 #ifdef DRAW_FILTER_RESULTS
@@ -388,6 +450,10 @@ void EdgeBasedCubeDetector::ApplyFilter(EdgeBasedCubeDetector *obj, void(EdgeBas
 #endif
 }
 
+/**
+ A filter method that elliminates the contours that are close to the edges of the image. 
+ All the distance parameters are defined inside the method.
+ */
 void EdgeBasedCubeDetector::FilterByDistanceToImageEdges()
 {
     int leftThreshold = 30;
@@ -407,6 +473,9 @@ void EdgeBasedCubeDetector::FilterByDistanceToImageEdges()
     }), std::end(patchContours));
 }
 
+/**
+ A filter method that elliminates the contours that do not resemble a square. It uses the Douglas–Peucker algorithm to approximate the contours to polygons, keeps the ones that have 4 edges, filters them by area (>200) and by the area ratio between the minimum area enclosing rectangle and the contour area.
+*/
 void EdgeBasedCubeDetector::FilterByShape()
 {
     std::vector<std::vector<cv::Point>> squareContours;
@@ -451,6 +520,8 @@ void EdgeBasedCubeDetector::FilterByShape()
     patchContours = squareContours;
 }
 
+
+/// A filter method that elliminates the contours that are too big or too small (based on the image area).
 void EdgeBasedCubeDetector::FilterByArea()
 {
     auto upperBound = (2 / 100.0) * inputImage.size().area();
@@ -467,6 +538,9 @@ void EdgeBasedCubeDetector::FilterByArea()
     }), std::end(patchContours));
 }
 
+/**
+ A filter method that elliminates the contours that have unequal length of each side (all sides should be about the same size).
+ */
 void EdgeBasedCubeDetector::FilterBySimmilarityBetweenSides()
 {
     patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
@@ -476,6 +550,7 @@ void EdgeBasedCubeDetector::FilterBySimmilarityBetweenSides()
     }), std::end(patchContours));
 }
 
+/// A filter method that elliminates the contours that do not have the edges almost parallel (2 by 2)
 void EdgeBasedCubeDetector::FilterByParallelismBetweenSides()
 {
     patchContours.erase(std::remove_if(std::begin(patchContours), std::end(patchContours), [&](std::vector<cv::Point> contour)
@@ -485,25 +560,51 @@ void EdgeBasedCubeDetector::FilterByParallelismBetweenSides()
     }), std::end(patchContours));
 }
 
+/**
+ A method that separates the detected contours into 3 regions (top, left or right). 
+ It creates the pre-defined regions as polygons and for every contour it checks the apartenence to a region by using cv::pointPolygonTest
+ 
+ ________________
+ |\            /|
+ | \          / |
+ |  \  TOP   /  |
+ |   \      /   |
+ |    \    /    |
+ |     \  /     |
+ |      \/      |
+ |      |       |
+ | LEFT | RIGHT |
+ |      |       |
+ |      |       |
+ |      |       |
+ |      |       |
+ ________________
+ 
+*/
 void EdgeBasedCubeDetector::SeparatePatchesIntoSides(std::vector<std::vector<cv::Point>> &topFaceRegions, std::vector<std::vector<cv::Point>> &leftFaceRegions, std::vector<std::vector<cv::Point>> &rightFaceRegions)
 {
+    // Compute some key points for defining the regions
     auto leftSideTwoThirds = cv::Point(0, (int)(inputImage.rows / 2.65));
     auto rightSideTwoThirds = cv::Point(inputImage.cols, (int)(inputImage.rows / 2.65));
     auto centerPoint = cv::Point(inputImage.cols / 2, inputImage.rows / 2);
 
+    // Define the top region
     auto topRegion = std::vector<cv::Point>{
         cv::Point(0, 0), cv::Point(inputImage.cols, 0),
         rightSideTwoThirds, centerPoint, leftSideTwoThirds
     };
 
+    // Define the left region
     auto leftRegion = std::vector<cv::Point>{
         leftSideTwoThirds, centerPoint, cv::Point(inputImage.cols / 2, inputImage.rows), cv::Point(0, inputImage.rows)
     };
 
+    // Define the right region
     auto rightRegion = std::vector<cv::Point>{
         rightSideTwoThirds, centerPoint, cv::Point(inputImage.cols / 2, inputImage.rows), cv::Point(inputImage.cols, inputImage.rows)
     };
 
+    // Test every patch for apartenence to a region
     for (auto patch : patchContours)
     {
         // Compute the weight center
@@ -524,6 +625,17 @@ void EdgeBasedCubeDetector::SeparatePatchesIntoSides(std::vector<std::vector<cv:
     }
 }
 
+/**
+ Extracts the corners of the 3 faces (for the entire region, NOT FOR A SINGLE CUBIE)
+ 
+ @param topFaceRegions All the regions of the top face (vector of contours)
+ @param topFaceRegions (out) A vector of 4 points that represent the corners of the top face
+ @param topFaceRegions All the regions of the left face (vector of contours)
+ @param topFaceRegions (out) A vector of 4 points that represent the corners of the left face
+ @param topFaceRegions All the regions of the right face (vector of contours)
+ @param topFaceRegions (out) A vector of 4 points that represent the corners of the right face
+ @param isFirstThreeFacesImage A bool that tells if this is the picture of the first three faces
+ */
 void EdgeBasedCubeDetector::ExtractFaceCorners(std::vector<std::vector<cv::Point>> topFaceRegions, std::vector<cv::Point2f>& topFaceCorners, std::vector<std::vector<cv::Point>> leftFaceRegions, std::vector<cv::Point2f>& leftFaceCorners, std::vector<std::vector<cv::Point>> rightFaceRegions, std::vector<cv::Point2f>& rightFaceCorners, bool isFirstThreeFacesImage)
 {
     this->ExtractTopFaceCorners(topFaceRegions, inputImage.size(), topFaceCorners);
