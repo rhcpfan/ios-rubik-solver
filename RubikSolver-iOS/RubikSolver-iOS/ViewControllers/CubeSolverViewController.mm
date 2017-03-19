@@ -433,20 +433,22 @@
     
     self.nextButton.enabled = NO;
     self.previousButton.enabled = NO;
-    
-    [rotationNode runAction:[rotationSCNAction reversedAction] completionHandler:^{
-        
-        [rotationNode enumerateChildNodesUsingBlock:^(SCNNode * _Nonnull child, BOOL * _Nonnull stop) {
-            child.transform = child.worldTransform;
-            [child removeFromParentNode];
-            [self.scene3D.rootNode addChildNode:child];
-        }];
-        
-        [rotationNode removeFromParentNode];
-        
-        self.nextButton.enabled = YES;
-        self.previousButton.enabled = YES;
-    }];
+
+	if (rotationSCNAction) {
+		[rotationNode runAction:[rotationSCNAction reversedAction] completionHandler:^{
+			
+			[rotationNode enumerateChildNodesUsingBlock:^(SCNNode * _Nonnull child, BOOL * _Nonnull stop) {
+				child.transform = child.worldTransform;
+				[child removeFromParentNode];
+				[self.scene3D.rootNode addChildNode:child];
+			}];
+			
+			[rotationNode removeFromParentNode];
+			
+			self.nextButton.enabled = YES;
+			self.previousButton.enabled = YES;
+		}];
+	}
 }
 
 - (void) AnimateEnding {
