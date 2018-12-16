@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4FDC603D1EDCB0E95329C9E2 /* libPods-RubikSolver-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */; };
+		6BCA98F021C6ABCC00DA260C /* UIButton+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */; };
+		6BCA98F321C6AE0A00DA260C /* UIColor+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA98F221C6AE0A00DA260C /* UIColor+Helpers.m */; };
 		9464AD161E2BB48A003BE0C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD151E2BB48A003BE0C1 /* main.m */; };
 		9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD181E2BB48A003BE0C1 /* AppDelegate.m */; };
 		9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD1D1E2BB48A003BE0C1 /* Main.storyboard */; };
@@ -39,6 +41,10 @@
 /* Begin PBXFileReference section */
 		46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6BCA98EE21C6ABCC00DA260C /* UIButton+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Helpers.h"; sourceTree = "<group>"; };
+		6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helpers.m"; sourceTree = "<group>"; };
+		6BCA98F121C6AE0A00DA260C /* UIColor+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helpers.h"; sourceTree = "<group>"; };
+		6BCA98F221C6AE0A00DA260C /* UIColor+Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helpers.m"; sourceTree = "<group>"; };
 		876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RubikSolver-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9464AD111E2BB48A003BE0C1 /* RubikSolver-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RubikSolver-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9464AD151E2BB48A003BE0C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,6 +130,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6BCA98ED21C6ABB000DA260C /* Custom Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6BCA98EE21C6ABCC00DA260C /* UIButton+Helpers.h */,
+				6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */,
+				6BCA98F121C6AE0A00DA260C /* UIColor+Helpers.h */,
+				6BCA98F221C6AE0A00DA260C /* UIColor+Helpers.m */,
+			);
+			path = "Custom Categories";
+			sourceTree = "<group>";
+		};
 		9464AD081E2BB48A003BE0C1 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +164,7 @@
 		9464AD131E2BB48A003BE0C1 /* RubikSolver-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6BCA98ED21C6ABB000DA260C /* Custom Categories */,
 				9464AD2B1E2BB6FF003BE0C1 /* ViewControllers */,
 				9464AD171E2BB48A003BE0C1 /* AppDelegate.h */,
 				9464AD181E2BB48A003BE0C1 /* AppDelegate.m */,
@@ -275,8 +293,6 @@
 				9464AD0D1E2BB48A003BE0C1 /* Sources */,
 				9464AD0E1E2BB48A003BE0C1 /* Frameworks */,
 				9464AD0F1E2BB48A003BE0C1 /* Resources */,
-				E4F12D01FB67686C5384314B /* [CP] Embed Pods Frameworks */,
-				F84179103AEEB44B69120E19 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,8 +314,8 @@
 				TargetAttributes = {
 					9464AD101E2BB48A003BE0C1 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5A8VCRJ637;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 6D7VXW62LM;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -337,49 +353,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E4F12D01FB67686C5384314B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F6E2458BBBEF096A60EBBC03 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RubikSolver-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F84179103AEEB44B69120E19 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -398,7 +387,9 @@
 				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
 				9464AD2E1E2BB6FF003BE0C1 /* MainViewController.mm in Sources */,
+				6BCA98F021C6ABCC00DA260C /* UIButton+Helpers.m in Sources */,
 				9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */,
+				6BCA98F321C6AE0A00DA260C /* UIColor+Helpers.m in Sources */,
 				9464AD161E2BB48A003BE0C1 /* main.m in Sources */,
 				9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */,
 			);
@@ -521,12 +512,14 @@
 			baseConfigurationReference = 46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5A8VCRJ637;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6D7VXW62LM;
 				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "wildcard-dev";
 			};
 			name = Debug;
 		};
@@ -535,12 +528,14 @@
 			baseConfigurationReference = 4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5A8VCRJ637;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6D7VXW62LM;
 				INFOPLIST_FILE = "RubikSolver-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rhcpfan.RubikSolver-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "wildcard-dev";
 			};
 			name = Release;
 		};

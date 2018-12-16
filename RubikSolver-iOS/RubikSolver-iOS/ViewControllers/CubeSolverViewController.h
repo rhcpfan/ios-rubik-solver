@@ -11,20 +11,20 @@
 
 @interface CubeSolverViewController : UIViewController
 
-- (void) AddRubiksCubeNodeToScene;
-- (void) SeparateCollorArrayIntoFaces;
+- (void)addRubiksCubeNodeToScene;
+- (void)separateCollorArrayIntoFaces;
 
 
 
-- (const char*) PrepareDataForSolver;
+- (const char*)prepareDataForSolver;
 
-- (NSString*) SolveCubeWithConfiguration: (const char*) cubeConfiguration;
-- (SCNAction*) GetAnimationFromMove: (NSString*) moveString;
+- (NSString*)solveCubeWithConfiguration:(const char*)cubeConfiguration;
+- (SCNAction*)getAnimationFromMove:(NSString*)moveString;
 
 @property NSMutableArray* rotationSequence;
 @property int rotationIndex;
 
-- (void) AnimateEnding;
+- (void)animateEnding;
 
 @property SCNScene *scene3D;
 @property SCNNode *rotationNode;

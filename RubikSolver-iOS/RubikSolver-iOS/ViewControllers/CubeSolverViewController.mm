@@ -21,8 +21,7 @@
 #pragma mark - Application Lifecycle
 #pragma mark -
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.rotationIndex = 0;
@@ -39,12 +38,13 @@
     // create and add an ambient light to the scene
     SCNNode *ambientLightNode = [SCNNode node];
     ambientLightNode.light = [SCNLight light];
-    ambientLightNode.light.type = SCNLightTypeAmbient;
-    ambientLightNode.light.color = [UIColor darkGrayColor];
+    ambientLightNode.light.type = SCNLightTypeSpot;
+    ambientLightNode.light.color = [UIColor redColor];
+    ambientLightNode.position = SCNVector3Make(0, 0, 8);
     [self.scene3D.rootNode addChildNode:ambientLightNode];
     
     // Add the rubik cubelets to the scene
-    [self AddRubiksCubeNodeToScene];
+    [self addRubiksCubeNodeToScene];
     
     // Set scene properties
     SCNView *scnView = self.sceneKitView;
@@ -75,8 +75,8 @@
     [self.scene3D.rootNode addChildNode:floorNode];
     
     // Solve the cube and extract the rotation sequence
-    const char * canonicalForm = [self PrepareDataForSolver];
-    NSString *solvingSolution = [self SolveCubeWithConfiguration:canonicalForm];
+    const char * canonicalForm = [self prepareDataForSolver];
+    NSString *solvingSolution = [self solveCubeWithConfiguration:canonicalForm];
     NSLog(@"CUBE STATE: %s", canonicalForm);
     NSArray<NSString*>* solvingRotations = [solvingSolution componentsSeparatedByString:@" "];
     self.rotationSequence = [[NSMutableArray alloc] initWithArray:solvingRotations];
@@ -86,14 +86,14 @@
 #pragma mark - 3D Cube Creation
 #pragma mark -
 
-- (SCNMaterial*) getMaterialWithColor:(UIColor*) materialColor {
+- (SCNMaterial*)getMaterialWithColor:(UIColor*) materialColor {
     SCNMaterial *coloredMaterial = [[SCNMaterial alloc] init];
     coloredMaterial.diffuse.contents = materialColor;
     coloredMaterial.specular.contents = [UIColor whiteColor];
     return coloredMaterial;
 }
 
-- (SCNMaterial*) GetMaterialFromStringRepresentation:(NSString*) stringColor {
+- (SCNMaterial*)getMaterialFromStringRepresentation:(NSString*) stringColor {
     
     SCNMaterial *coloredMaterial = [[SCNMaterial alloc] init];
     
@@ -109,7 +109,7 @@
     return coloredMaterial;
 }
 
-- (void) SeparateCollorArrayIntoFaces {
+- (void)separateCollorArrayIntoFaces {
     
     // Separate the large array into 6 smaller arrays and look at the center color
     for (int index = 0; index < [self.allColorsArray count]; index += 9) {
@@ -119,16 +119,16 @@
         
         NSString *centerColor = [subArray objectAtIndex:4];
         
-        if ([centerColor isEqualToString:@"Y"]) { self.upFaceColors = [NSArray arrayWithArray: subArray]; } else
-            if ([centerColor isEqualToString:@"G"]) { self.leftFaceColors = [NSArray arrayWithArray:subArray]; } else
-                if ([centerColor isEqualToString:@"O"]) { self.frontFaceColors = [NSArray arrayWithArray:subArray]; } else
-                    if ([centerColor isEqualToString:@"W"]) { self.downFaceColors = [NSArray arrayWithArray:subArray]; } else
-                        if ([centerColor isEqualToString:@"R"]) { self.backFaceColors = [NSArray arrayWithArray:subArray]; } else
-                            if ([centerColor isEqualToString:@"B"]) { self.rightFaceColors = [NSArray arrayWithArray:subArray]; }
+        if ([centerColor isEqualToString:@"Y"]) { self.upFaceColors = [NSArray arrayWithArray: subArray]; }
+        else if ([centerColor isEqualToString:@"G"]) { self.leftFaceColors = [NSArray arrayWithArray:subArray]; }
+        else if ([centerColor isEqualToString:@"O"]) { self.frontFaceColors = [NSArray arrayWithArray:subArray]; }
+        else if ([centerColor isEqualToString:@"W"]) { self.downFaceColors = [NSArray arrayWithArray:subArray]; }
+        else if ([centerColor isEqualToString:@"R"]) { self.backFaceColors = [NSArray arrayWithArray:subArray]; }
+        else if ([centerColor isEqualToString:@"B"]) { self.rightFaceColors = [NSArray arrayWithArray:subArray]; }
     }
 }
 
-- (void) AddRubiksCubeNodeToScene {
+- (void)addRubiksCubeNodeToScene {
     
     NSMutableArray *cubeMaterials = [[NSMutableArray alloc] init];
     [cubeMaterials addObject: [self getMaterialWithColor:[UIColor blackColor]]];
@@ -138,7 +138,7 @@
     [cubeMaterials addObject: [self getMaterialWithColor:[UIColor blackColor]]];
     [cubeMaterials addObject: [self getMaterialWithColor:[UIColor blackColor]]];
     
-    [self SeparateCollorArrayIntoFaces];
+    [self separateCollorArrayIntoFaces];
     
     for (int x = -1; x <= 1 ; x++) {
         for (int y = -1; y <= 1; y++) {
@@ -151,28 +151,28 @@
                 //TOP FACE
                 if (y == 1) {
                     int faceIndex = (abs(z + 1) * 3 + x + 1);
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.upFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.upFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:4 withObject: faceMaterial];
                 }
                 
                 //BOTTOM FACE
                 if (y == -1) {
                     int faceIndex = (abs(z - 1) * 3 + x + 1);
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.downFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.downFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:5 withObject: faceMaterial];
                 }
                 
                 // FRONT FACE
                 if(z == 1) {
                     int faceIndex = (abs(y - 1) * 3 + x + 1);
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.frontFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.frontFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:0 withObject: faceMaterial];
                 }
                 
                 // BACK FACE
                 if(z == -1) {
                     int faceIndex = (abs(y - 1) * 3 + abs(x - 1));
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.backFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.backFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:2 withObject: faceMaterial];
                 }
                 
@@ -180,7 +180,7 @@
                 if (x == - 1)
                 {
                     int faceIndex = (abs(y - 1) * 3 + z + 1);
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.leftFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.leftFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:3 withObject: faceMaterial];
                 }
                 
@@ -188,7 +188,7 @@
                 if (x == 1)
                 {
                     int faceIndex = (abs(y - 1) * 3 + abs(z - 1));
-                    SCNMaterial *faceMaterial = [self GetMaterialFromStringRepresentation: [self.rightFaceColors objectAtIndex:faceIndex]];
+                    SCNMaterial *faceMaterial = [self getMaterialFromStringRepresentation: [self.rightFaceColors objectAtIndex:faceIndex]];
                     [cubeMaterials replaceObjectAtIndex:1 withObject: faceMaterial];
                 }
                 
@@ -210,7 +210,7 @@
 #pragma mark - Cube Rotation
 #pragma mark -
 
-- (SCNNode*) GetRotationNodeFromMove: (NSString*) moveString {
+- (SCNNode*)getRotationNodeFromMove:(NSString*)moveString {
     // Add all the cubes into a node that represents the face
     SCNNode *rotateNode = [[SCNNode alloc] init];
     rotateNode.name = @"RotateNode";
@@ -270,7 +270,7 @@
     return rotateNode;
 }
 
-- (SCNAction*) GetAnimationFromMove: (NSString*) moveString {
+- (SCNAction*)getAnimationFromMove:(NSString*)moveString {
     
     // Number and direction of rotation
     int nrOfRotations = 1;
@@ -304,7 +304,7 @@
 
 #pragma mark - Cube Solving
 #pragma mark -
-- (const char*) PrepareDataForSolver {
+- (const char*)prepareDataForSolver {
     
     NSString *configuration = @"";
     NSMutableArray* allColors = [NSMutableArray arrayWithArray:self.upFaceColors];
@@ -337,7 +337,7 @@
     return [configuration UTF8String];
 }
 
-- (NSString*) SolveCubeWithConfiguration: (const char*) cubeConfiguration {
+- (NSString*)solveCubeWithConfiguration:(const char*)cubeConfiguration {
     
     char* solutionArray = ApplyKociembaAlgorithm(strdup(cubeConfiguration), 24, 1000, 0, "cache");
     if(solutionArray == NULL) {
@@ -353,8 +353,7 @@
 #pragma mark - Application Lifecycle
 #pragma mark -
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
@@ -362,8 +361,7 @@
     return YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -371,24 +369,26 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
 
 - (IBAction)didPressNextButton:(UIButton *)sender {
     
-    if(self.rotationIndex >= [self.rotationSequence count]) {
-        self.nextButton.enabled = NO;
-        [self AnimateEnding];
+    if(self.rotationIndex >= [self.rotationSequence count] && ![sender.currentTitle isEqualToString:@"RESTART"]) {
+        [self.nextButton setTitle:@"RESTART" forState:UIControlStateNormal];
+        [self animateEnding];
+        return;
+    } else if ([sender.currentTitle isEqualToString:@"RESTART"]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }
     
     self.solutionLabel.text = self.rotationSequence[self.rotationIndex];
     
-    SCNNode *rotationNode = [self GetRotationNodeFromMove:self.rotationSequence[self.rotationIndex]];
-    SCNAction *rotationSCNAction = [self GetAnimationFromMove:self.rotationSequence[self.rotationIndex]];
+    SCNNode *rotationNode = [self getRotationNodeFromMove:self.rotationSequence[self.rotationIndex]];
+    SCNAction *rotationSCNAction = [self getAnimationFromMove:self.rotationSequence[self.rotationIndex]];
     
     [self.scene3D.rootNode addChildNode:rotationNode];
     
@@ -406,8 +406,10 @@
         [rotationNode removeFromParentNode];
         self.rotationIndex += 1;
         
-        self.nextButton.enabled = YES;
-        self.previousButton.enabled = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.nextButton.enabled = YES;
+            self.previousButton.enabled = YES;
+        });
     }];
 }
 
@@ -419,15 +421,14 @@
     NSLog(@"Rotation index: %d", self.rotationIndex);
     
     if(self.rotationIndex < 0) {
-        self.rotationIndex = 0;
-        self.previousButton.enabled = NO;
+        [self.navigationController popViewControllerAnimated:YES];
         return;
     }
     
     self.solutionLabel.text = self.rotationSequence[self.rotationIndex];
     
-    SCNNode *rotationNode = [self GetRotationNodeFromMove:self.rotationSequence[self.rotationIndex]];
-    SCNAction *rotationSCNAction = [self GetAnimationFromMove:self.rotationSequence[self.rotationIndex]];
+    SCNNode *rotationNode = [self getRotationNodeFromMove:self.rotationSequence[self.rotationIndex]];
+    SCNAction *rotationSCNAction = [self getAnimationFromMove:self.rotationSequence[self.rotationIndex]];
     
     [self.scene3D.rootNode addChildNode:rotationNode];
     
@@ -447,13 +448,15 @@
 		}];
 		
 		[rotationNode removeFromParentNode];
-		
-		self.nextButton.enabled = YES;
-		self.previousButton.enabled = YES;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.nextButton.enabled = YES;
+            self.previousButton.enabled = YES;
+        });
 	}];
 }
 
-- (void) AnimateEnding {
+- (void)animateEnding {
     
     // Get all the cubes in the scene
     NSArray<SCNNode *> *cubelets = [self.scene3D.rootNode childNodesPassingTest:^BOOL(SCNNode * _Nonnull child, BOOL * _Nonnull stop) {

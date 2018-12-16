@@ -8,6 +8,7 @@
 
 #import "ColorCorrectionViewController.h"
 #import "CubeSolverViewController.h"
+#import "UIButton+Helpers.h"
 
 @interface ColorCorrectionViewController ()
 
@@ -47,104 +48,88 @@
     return [UIColor blackColor];
 }
 
-- (void) setColorsFromArray: (NSInteger) faceIndex {
+- (void)setColorsFromArray:(NSInteger)faceIndex {
     
     NSInteger startIndex = faceIndex * 9;
     
-    [self.firstPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 0]]];
-    [self.secondPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 1]]];
-    [self.thirdPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 2]]];
-    [self.fourthPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 3]]];
-    [self.fifthPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 4]]];
-    [self.sixtPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 5]]];
-    [self.seventhPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 6]]];
-    [self.eightPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 7]]];
-    [self.ninethPatchButton setBackgroundColor: [self getUIColorFromString:self.faceColors[startIndex + 8]]];
+    [self.firstPatchButton setCubieColor:self.faceColors[startIndex + 0]];
+    [self.secondPatchButton setCubieColor:self.faceColors[startIndex + 1]];
+    [self.thirdPatchButton setCubieColor:self.faceColors[startIndex + + 2]];
+    [self.fourthPatchButton setCubieColor:self.faceColors[startIndex + + 3]];
+    [self.fifthPatchButton setCubieColor:self.faceColors[startIndex + + 4]];
+    [self.sixtPatchButton setCubieColor:self.faceColors[startIndex + 5]];
+    [self.seventhPatchButton setCubieColor:self.faceColors[startIndex + 6]];
+    [self.eightPatchButton setCubieColor:self.faceColors[startIndex + 7]];
+    [self.ninethPatchButton setCubieColor:self.faceColors[startIndex + 8]];
 }
 
 - (void) removeAllBorders {
-    self.firstPatchButton.layer.borderWidth = 0;
-    self.secondPatchButton.layer.borderWidth = 0;
-    self.thirdPatchButton.layer.borderWidth = 0;
+    [self.firstPatchButton removeBorders];
+    [self.secondPatchButton removeBorders];
+    [self.thirdPatchButton removeBorders];
     
-    self.fourthPatchButton.layer.borderWidth = 0;
-    self.fifthPatchButton.layer.borderWidth = 0;
-    self.sixtPatchButton.layer.borderWidth = 0;
+    [self.fourthPatchButton removeBorders];
+    [self.fifthPatchButton removeBorders];
+    [self.sixtPatchButton removeBorders];
     
-    self.seventhPatchButton.layer.borderWidth = 0;
-    self.eightPatchButton.layer.borderWidth = 0;
-    self.ninethPatchButton.layer.borderWidth = 0;
+    [self.seventhPatchButton removeBorders];
+    [self.eightPatchButton removeBorders];
+    [self.ninethPatchButton removeBorders];
 }
-
-- (void) addBorderToButton:(UIButton *)button {
-    button.layer.borderWidth = 5;
-    button.layer.borderColor = [UIColor blackColor].CGColor;
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (IBAction)didPressFirstPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressSecondPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 1;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressThirdPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 2;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressFourthPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 3;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressFifthPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 4;
-    [self addBorderToButton:self.selectedButton];
-    
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressSixthPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 5;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressSeventhPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 6;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressEightPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 7;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 - (IBAction)didPressNinethPatchButton:(UIButton *)sender {
     [self removeAllBorders];
     self.selectedButton = sender;
     self.currentSquareIndexInCube = self.currentFaceIndex * 9 + 8;
-    [self addBorderToButton:self.selectedButton];
+    [self.selectedButton addBordersWithColor:[UIColor blackColor] andWidth:5];
 }
 
 - (IBAction)didPressRedColorButton:(UIButton *)sender {
@@ -201,16 +186,15 @@
 }
 
 - (IBAction)didPressPreviousFaceButton:(id)sender {
-    if(self.currentFaceIndex > 0)
-    {
+    if(self.currentFaceIndex > 0) {
         self.currentFaceIndex -= 1;
         [self setColorsFromArray:self.currentFaceIndex];
         self.faceImageView.image = [self.faceImages objectAtIndex:self.currentFaceIndex];
     }
+    
     self.faceIndexLabel.text = [NSString stringWithFormat:@"Face %d/6", (int)self.currentFaceIndex + 1];
     
-    if(self.currentFaceIndex < 5)
-    {
+    if(self.currentFaceIndex < 5) {
         [self.nextFaceButton setTitle:@"Next" forState:UIControlStateNormal];
         [self.nextFaceButton setTitle:@"Next" forState:UIControlStateHighlighted];
     }

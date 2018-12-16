@@ -4,9 +4,13 @@ PODS:
 DEPENDENCIES:
   - OpenCV
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - OpenCV
+
 SPEC CHECKSUMS:
   OpenCV: 41c4250e2b06a394d6fbb634b5fa622cdd846018
 
 PODFILE CHECKSUM: 3eb280e3acd79455476967b4515c9d3aef6420f3
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3
