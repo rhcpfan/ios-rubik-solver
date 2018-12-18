@@ -242,79 +242,187 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ZY9-Di-Ugp">
                                         <rect key="frame" x="0.0" y="0.0" width="333.5" height="111"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-8E-E5y">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-dS-0CP">
                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressFirstPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="sqv-eF-tfc"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMd-Os-FAb">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-8E-E5y">
+                                                        <rect key="frame" x="33" y="33.5" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFirstPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="sqv-eF-tfc"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="RHv-8E-E5y" firstAttribute="centerY" secondItem="y9o-dS-0CP" secondAttribute="centerY" id="HTc-h5-xNF"/>
+                                                    <constraint firstItem="RHv-8E-E5y" firstAttribute="centerX" secondItem="y9o-dS-0CP" secondAttribute="centerX" id="Z3A-2b-e83"/>
+                                                    <constraint firstItem="RHv-8E-E5y" firstAttribute="height" secondItem="y9o-dS-0CP" secondAttribute="height" multiplier="0.4" id="ZHv-ac-TOS"/>
+                                                    <constraint firstItem="RHv-8E-E5y" firstAttribute="width" secondItem="y9o-dS-0CP" secondAttribute="width" multiplier="0.4" id="eD0-mS-FDf"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bV-CA-Y0j">
                                                 <rect key="frame" x="111" y="0.0" width="111" height="111"/>
-                                                <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressSecondPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="xDZ-yY-vdd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-rz-sa5">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMd-Os-FAb">
+                                                        <rect key="frame" x="33.5" y="33.5" width="44" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSecondPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="xDZ-yY-vdd"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="QMd-Os-FAb" firstAttribute="centerX" secondItem="4bV-CA-Y0j" secondAttribute="centerX" id="5gi-b2-hW3"/>
+                                                    <constraint firstItem="QMd-Os-FAb" firstAttribute="centerY" secondItem="4bV-CA-Y0j" secondAttribute="centerY" id="KXf-uC-kka"/>
+                                                    <constraint firstItem="QMd-Os-FAb" firstAttribute="width" secondItem="4bV-CA-Y0j" secondAttribute="width" multiplier="0.4" id="S96-kO-h0O"/>
+                                                    <constraint firstItem="QMd-Os-FAb" firstAttribute="height" secondItem="4bV-CA-Y0j" secondAttribute="height" multiplier="0.4" id="fRh-5V-doV"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xv8-5x-ehV">
                                                 <rect key="frame" x="222" y="0.0" width="111.5" height="111"/>
-                                                <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressThirdPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="2Rk-lT-0lF"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjK-rz-sa5">
+                                                        <rect key="frame" x="33.5" y="33.5" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressThirdPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="2Rk-lT-0lF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="DjK-rz-sa5" firstAttribute="centerX" secondItem="Xv8-5x-ehV" secondAttribute="centerX" id="3fx-pF-gKc"/>
+                                                    <constraint firstItem="DjK-rz-sa5" firstAttribute="width" secondItem="Xv8-5x-ehV" secondAttribute="width" multiplier="0.4" id="65e-xa-DL4"/>
+                                                    <constraint firstItem="DjK-rz-sa5" firstAttribute="height" secondItem="Xv8-5x-ehV" secondAttribute="height" multiplier="0.4" id="CAw-Yr-Aoz"/>
+                                                    <constraint firstItem="DjK-rz-sa5" firstAttribute="centerY" secondItem="Xv8-5x-ehV" secondAttribute="centerY" id="x11-oC-Uum"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="M4o-YL-EuU">
                                         <rect key="frame" x="0.0" y="111" width="333.5" height="111.5"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiH-tf-upX">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-vM-2rp">
                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="111.5"/>
-                                                <color key="backgroundColor" red="0.047058823529411764" green="0.34901960784313724" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressFourthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="GOA-Le-TA7"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-h0-r6c">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiH-tf-upX">
+                                                        <rect key="frame" x="33" y="33.5" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.047058823529411764" green="0.34901960784313724" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFourthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="GOA-Le-TA7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="XiH-tf-upX" firstAttribute="centerX" secondItem="rfk-vM-2rp" secondAttribute="centerX" id="1qr-sm-pAp"/>
+                                                    <constraint firstItem="XiH-tf-upX" firstAttribute="height" secondItem="rfk-vM-2rp" secondAttribute="height" multiplier="0.4" id="Cgo-ec-6sX"/>
+                                                    <constraint firstItem="XiH-tf-upX" firstAttribute="width" secondItem="rfk-vM-2rp" secondAttribute="width" multiplier="0.4" id="JbX-ae-k1g"/>
+                                                    <constraint firstItem="XiH-tf-upX" firstAttribute="centerY" secondItem="rfk-vM-2rp" secondAttribute="centerY" id="t4h-Mq-7bL"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="280-Gy-H7z">
                                                 <rect key="frame" x="111" y="0.0" width="111" height="111.5"/>
-                                                <color key="backgroundColor" red="0.78431372549019607" green="0.80000000000000004" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressFifthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="S2h-aN-4sd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q6-DX-mKb">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffa-h0-r6c">
+                                                        <rect key="frame" x="33.5" y="33.5" width="44" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.78431372549019607" green="0.80000000000000004" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressFifthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="S2h-aN-4sd"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="ffa-h0-r6c" firstAttribute="height" secondItem="280-Gy-H7z" secondAttribute="height" multiplier="0.4" id="1cx-7K-uYi"/>
+                                                    <constraint firstItem="ffa-h0-r6c" firstAttribute="centerY" secondItem="280-Gy-H7z" secondAttribute="centerY" id="5gc-Ce-WR0"/>
+                                                    <constraint firstItem="ffa-h0-r6c" firstAttribute="width" secondItem="280-Gy-H7z" secondAttribute="width" multiplier="0.4" id="6MR-kY-2f6"/>
+                                                    <constraint firstItem="ffa-h0-r6c" firstAttribute="centerX" secondItem="280-Gy-H7z" secondAttribute="centerX" id="uZc-MV-XmW"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-Wk-Bom">
                                                 <rect key="frame" x="222" y="0.0" width="111.5" height="111.5"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressSixthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="fHx-Cz-A1w"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1q6-DX-mKb">
+                                                        <rect key="frame" x="33.5" y="33.5" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSixthPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="fHx-Cz-A1w"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="1q6-DX-mKb" firstAttribute="width" secondItem="gSe-Wk-Bom" secondAttribute="width" multiplier="0.4" id="0e4-8I-07N"/>
+                                                    <constraint firstItem="1q6-DX-mKb" firstAttribute="centerY" secondItem="gSe-Wk-Bom" secondAttribute="centerY" id="B2n-vL-YWd"/>
+                                                    <constraint firstItem="1q6-DX-mKb" firstAttribute="height" secondItem="gSe-Wk-Bom" secondAttribute="height" multiplier="0.4" id="OO3-Xo-lAj"/>
+                                                    <constraint firstItem="1q6-DX-mKb" firstAttribute="centerX" secondItem="gSe-Wk-Bom" secondAttribute="centerX" id="OPk-fS-N1M"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PxB-q7-kIM">
                                         <rect key="frame" x="0.0" y="222.5" width="333.5" height="111"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeR-KT-7cF">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-Mj-rkN">
                                                 <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressSeventhPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="E2a-C3-t3H"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgz-e9-p5c">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeR-KT-7cF">
+                                                        <rect key="frame" x="33" y="33" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressSeventhPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="E2a-C3-t3H"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="LeR-KT-7cF" firstAttribute="centerY" secondItem="Bre-Mj-rkN" secondAttribute="centerY" id="GHX-RF-QUv"/>
+                                                    <constraint firstItem="LeR-KT-7cF" firstAttribute="centerX" secondItem="Bre-Mj-rkN" secondAttribute="centerX" id="Nnb-XK-jOb"/>
+                                                    <constraint firstItem="LeR-KT-7cF" firstAttribute="width" secondItem="Bre-Mj-rkN" secondAttribute="width" multiplier="0.4" id="NvF-Ep-u1B"/>
+                                                    <constraint firstItem="LeR-KT-7cF" firstAttribute="height" secondItem="Bre-Mj-rkN" secondAttribute="height" multiplier="0.4" id="lxw-5k-Gc1"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMR-Jb-4cz">
                                                 <rect key="frame" x="111" y="0.0" width="111" height="111"/>
-                                                <color key="backgroundColor" red="0.77647058823529413" green="0.32156862745098042" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressEightPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="SuK-LD-7g4"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p17-ue-Bey">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgz-e9-p5c">
+                                                        <rect key="frame" x="33.5" y="33" width="44" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.77647058823529413" green="0.32156862745098042" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressEightPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="SuK-LD-7g4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Fgz-e9-p5c" firstAttribute="height" secondItem="YMR-Jb-4cz" secondAttribute="height" multiplier="0.4" id="36D-Lk-LvH"/>
+                                                    <constraint firstItem="Fgz-e9-p5c" firstAttribute="centerY" secondItem="YMR-Jb-4cz" secondAttribute="centerY" id="C64-py-lbi"/>
+                                                    <constraint firstItem="Fgz-e9-p5c" firstAttribute="width" secondItem="YMR-Jb-4cz" secondAttribute="width" multiplier="0.4" id="qh6-vC-Qnu"/>
+                                                    <constraint firstItem="Fgz-e9-p5c" firstAttribute="centerX" secondItem="YMR-Jb-4cz" secondAttribute="centerX" id="zYs-Is-m6T"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Shz-8A-3pU">
                                                 <rect key="frame" x="222" y="0.0" width="111.5" height="111"/>
-                                                <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                                <connections>
-                                                    <action selector="didPressNinethPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="Rqz-6C-cya"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p17-ue-Bey">
+                                                        <rect key="frame" x="33.5" y="33" width="44.5" height="44.5"/>
+                                                        <color key="backgroundColor" red="0.77254901960784317" green="0.0" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="didPressNinethPatchButton:" destination="u1B-d4-wze" eventType="touchUpInside" id="Rqz-6C-cya"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="p17-ue-Bey" firstAttribute="height" secondItem="Shz-8A-3pU" secondAttribute="height" multiplier="0.4" id="9LF-hF-ZTK"/>
+                                                    <constraint firstItem="p17-ue-Bey" firstAttribute="centerY" secondItem="Shz-8A-3pU" secondAttribute="centerY" id="Clj-TX-Kwc"/>
+                                                    <constraint firstItem="p17-ue-Bey" firstAttribute="width" secondItem="Shz-8A-3pU" secondAttribute="width" multiplier="0.4" id="D5F-8u-Fsn"/>
+                                                    <constraint firstItem="p17-ue-Bey" firstAttribute="centerX" secondItem="Shz-8A-3pU" secondAttribute="centerX" id="qfq-sn-ePX"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -521,7 +629,7 @@
                                     <action selector="didPressNextButton:" destination="cnD-Qu-lm7" eventType="touchUpInside" id="Z1W-yC-Ijy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMG-bY-0qr" userLabel="Next Move Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LMG-bY-0qr" userLabel="Next Move Label">
                                 <rect key="frame" x="20" y="489" width="335" height="59.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="LMG-bY-0qr" secondAttribute="height" multiplier="28:5" id="hzz-Bo-Dsv"/>

@@ -38,8 +38,8 @@
     // create and add an ambient light to the scene
     SCNNode *ambientLightNode = [SCNNode node];
     ambientLightNode.light = [SCNLight light];
-    ambientLightNode.light.type = SCNLightTypeSpot;
-    ambientLightNode.light.color = [UIColor redColor];
+    ambientLightNode.light.type = SCNLightTypeAmbient;
+    ambientLightNode.light.color = [UIColor darkGrayColor];
     ambientLightNode.position = SCNVector3Make(0, 0, 8);
     [self.scene3D.rootNode addChildNode:ambientLightNode];
     
@@ -77,10 +77,15 @@
     // Solve the cube and extract the rotation sequence
     const char * canonicalForm = [self prepareDataForSolver];
     NSString *solvingSolution = [self solveCubeWithConfiguration:canonicalForm];
-    NSLog(@"CUBE STATE: %s", canonicalForm);
-    NSArray<NSString*>* solvingRotations = [solvingSolution componentsSeparatedByString:@" "];
-    self.rotationSequence = [[NSMutableArray alloc] initWithArray:solvingRotations];
-    
+    if (solvingSolution != nil) {
+        NSArray<NSString*>* solvingRotations = [solvingSolution componentsSeparatedByString:@" "];
+        self.rotationSequence = [[NSMutableArray alloc] initWithArray:solvingRotations];
+    }
+
+    if (solvingSolution == nil) {
+        self.solutionLabel.text = @"Invalid configuration.";
+        [self.nextButton setTitle:@"RETRY" forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - 3D Cube Creation
@@ -341,12 +346,11 @@
     
     char* solutionArray = ApplyKociembaAlgorithm(strdup(cubeConfiguration), 24, 1000, 0, "cache");
     if(solutionArray == NULL) {
-        return @"Configuration Error. Please check the cube faces again.";
+        return nil;
     }
     
     NSString *solutionString = [NSString stringWithUTF8String:solutionArray];
     solutionString = [solutionString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSLog(@"Solution: %@", solutionString);
     return solutionString;
 }
 
@@ -375,12 +379,12 @@
 }
 
 - (IBAction)didPressNextButton:(UIButton *)sender {
-    
+
     if(self.rotationIndex >= [self.rotationSequence count] && ![sender.currentTitle isEqualToString:@"RESTART"]) {
         [self.nextButton setTitle:@"RESTART" forState:UIControlStateNormal];
         [self animateEnding];
         return;
-    } else if ([sender.currentTitle isEqualToString:@"RESTART"]) {
+    } else if ([sender.currentTitle isEqualToString:@"RESTART"] || [sender.currentTitle isEqualToString:@"RETRY"]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }
@@ -414,7 +418,6 @@
 }
 
 - (IBAction)didPressPreviousButton:(UIButton *)sender {
-    
     
     self.rotationIndex -= 1;
     
