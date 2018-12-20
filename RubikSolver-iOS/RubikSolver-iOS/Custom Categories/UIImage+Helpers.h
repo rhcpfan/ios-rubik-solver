@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (Helpers)
 
+- (void)saveToDocumentsFolderWithName:(NSString*)imageName;
+
 @end
 
 NS_ASSUME_NONNULL_END

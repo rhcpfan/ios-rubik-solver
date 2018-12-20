@@ -38,7 +38,9 @@ bool EdgeBasedCubeDetector::PointsIntersect(cv::Point2f A1, cv::Point2f B1, cv::
 cv::Point EdgeBasedCubeDetector::ComputeWeightCenterHu(const std::vector<cv::Point>& c)
 {
     auto moments = cv::moments(c, false);
-    return cv::Point(moments.m10 / moments.m00, moments.m01 / moments.m00);
+    auto xCoord = moments.m00 == 0 ? 0 : moments.m10 / moments.m00;
+    auto yCoord = moments.m00 == 0 ? 0 : moments.m01 / moments.m00;
+    return cv::Point(xCoord, yCoord);
 }
 
 /**

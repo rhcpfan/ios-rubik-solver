@@ -9,15 +9,7 @@
 #import "CubeCaptureViewController.h"
 #import "ColorCorrectionViewController.h"
 
-@interface CubeCaptureViewController ()
-
-@end
-
 @implementation CubeCaptureViewController
-
-@synthesize acceptedColorsArray = _acceptedColorsArray;
-@synthesize computedColorsArray = _computedColorsArray;
-@synthesize photoCamera = _photoCamera;
 
 - (void)viewDidLoad {
     
@@ -29,9 +21,7 @@
     didTakeFirstPicture = NO;
     
     // Load the SVM classifier
-    NSString *svmClassifierPath = [[NSBundle mainBundle] pathForResource: @"color-classification-svm-2" ofType: @"yml"];
-    std::string svmClassifierPathStd = std::string([svmClassifierPath UTF8String]);
-    _colorDetector.LoadSVMFromFile(svmClassifierPathStd);
+    [self loadSvmClassifier];
     
     // Alloc the detected colors array
     _acceptedColorsArray = [[NSMutableArray alloc] init];
@@ -66,35 +56,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Instance Methods -
+
+- (void)loadSvmClassifier {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *fManager = [NSFileManager defaultManager];
+    NSString *svmClassifierPath = [documentsDirectory stringByAppendingPathComponent:@"svm-trained-on-device.yml"];
+
+    if (![fManager fileExistsAtPath:svmClassifierPath]) {
+        svmClassifierPath = [[NSBundle mainBundle] pathForResource: @"color-classification-svm" ofType: @"yml"];
+    }
+
+    _colorDetector.LoadSVMFromFile([svmClassifierPath cStringUsingEncoding:NSASCIIStringEncoding]);
+}
+
 #pragma mark - Protocol CvPhotoCameraDelegate
 
 #ifdef __cplusplus
-
-/**
- Saves a cv::Mat image to the documents folder (you can access it via iTunes)
- @param image The cv::Mat image to be saved
- @param imageName The name of the image, without extension (ex. "accepted_image")
- */
-- (void)saveMatImageToDocumentsFolder:(const cv::Mat&)image named:(NSString*)imageName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%d.jpg", imageName, photoIndex]];
-    NSData *imageData = UIImageJPEGRepresentation(MatToUIImage(image), 1);
-    [imageData writeToFile:appFile atomically:NO];
-}
-
-/**
- Saves an image of type <b>UIImage</b> to the documents folder (you can access it via iTunes)
- @param image The cv::Mat image to be saved
- @param imageName The name of the image, without extension (ex. "accepted_image")
- */
-- (void)saveUIImageToDocumentsFolder:(UIImage*)image named:(NSString*)imageName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appFile = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%d.jpg", imageName, photoIndex]];
-    NSData *imageData = UIImageJPEGRepresentation(image, 1);
-    [imageData writeToFile:appFile atomically:NO];
-}
 
 /**
  Method invoked after taking a picture (CvPhotoCameraDelegate method)
@@ -133,21 +112,17 @@
         auto rightColors = _colorDetector.RecognizeColors(rightImage);
         
         _computedColorsArray = [[NSMutableArray alloc] init];
-        
-        std::cout << std::endl;
+
         for (int i = 0; i < topColors.size(); i++) {
             [_computedColorsArray addObject: [NSString stringWithCString:topColors[i].c_str() encoding:[NSString defaultCStringEncoding]]];
-            std::cout << topColors[i] << " ";
         }
-        std::cout << std::endl;
+
         for (int i = 0; i < leftColors.size(); i++) {
             [_computedColorsArray addObject: [NSString stringWithCString:leftColors[i].c_str() encoding:[NSString defaultCStringEncoding]]];
-            std::cout << leftColors[i] << " ";
         }
-        std::cout << std::endl;
+
         for (int i = 0; i < rightColors.size(); i++) {
             [_computedColorsArray addObject: [NSString stringWithCString:rightColors[i].c_str() encoding:[NSString defaultCStringEncoding]]];
-            std::cout << rightColors[i] << " ";
         }
         
         cv::cvtColor(outputImage, rgbaImage, CV_BGR2RGBA);
@@ -194,9 +169,6 @@
 
 - (IBAction)didPressRetakeImage:(UIButton *)sender {
     
-    NSString* fileName = [NSString stringWithFormat:@"rejected_photo_%d", rand()];
-    [self saveUIImageToDocumentsFolder:self.capturedImage named:fileName];
-    
     if(!didTakeFirstPicture) {
         self.instructionsLabel.text = @"Take the picture of the first three faces.";
     } else {
@@ -206,7 +178,7 @@
     self.overlayImageView.image = [UIImage imageNamed:@"guide-overlay"];
     self.overlayImageView.alpha = 0.5;
     
-    [self.photoCamera start];
+    [_photoCamera start];
     
     self.captureImageButton.hidden = NO;
     self.acceptButton.hidden = YES;
@@ -224,13 +196,7 @@
     
     
     // If the user has taken the second photo, go to the correction view
-    if(didTakeFirstPicture) {
-        
-        for (UIImage *faceImage in self.faceImagesArray) {
-            NSString* fileName = [NSString stringWithFormat:@"color_recognition_%d", rand()];
-            [self saveUIImageToDocumentsFolder:faceImage named:fileName];
-        }
-        
+    if(didTakeFirstPicture) {        
         [self performSegueWithIdentifier:@"captureToCorrectionSegue" sender:self];
     } else {
         didTakeFirstPicture = YES;

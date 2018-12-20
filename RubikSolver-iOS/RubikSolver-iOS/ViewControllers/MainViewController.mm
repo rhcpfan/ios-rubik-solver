@@ -6,15 +6,19 @@
 //  Copyright © 2017 HomeApps. All rights reserved.
 //
 
-#import "MainViewController.h"
 #import "CubeCaptureViewController.h"
+#import "SVMTrainer.hpp"
+
+#import "MainViewController.h"
 
 // Import search.hpp for applying the Kociemba algorithm at starup in order to
 // create the pruning tables needed for solving
 #import "search.hpp"
 
 
-@interface MainViewController ()
+@interface MainViewController () {
+    SVMTrainer _svmTrainer;
+}
 
 @end
 
@@ -27,16 +31,44 @@
     // the necessary pruning tables for the solver
     char* solutionArray = ApplyKociembaAlgorithm(strdup("ULURURRLDLDLBRUDBUUUFDFLDBRBUFBDDDRFLUBDLFBRLFFBFBLRFR"), 24, 1000, 0, "cache");
     NSLog(@"Solution: %@", [NSString stringWithUTF8String:solutionArray]);
-    
+
+    [self startSVMTraining];
+
     [self.startButton setEnabled:YES];
 }
 
+- (void)startSVMTraining {
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSFileManager *fManager = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *fileEnumerator = [fManager enumeratorAtPath:documentsDirectory];
+
+    std::vector<cv::Mat> cubeImages;
+    std::vector<std::string> cubeColors;
+
+    for (NSString *fileName in fileEnumerator) {
+        if ([fileName hasPrefix:@"cubeface_"]) {
+            NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+
+            UIImage *faceImage = [UIImage imageWithContentsOfFile:filePath];
+            NSString *faceColors = [[fileName componentsSeparatedByString:@"_"] objectAtIndex:1];
+
+            cv::Mat faceImageMat;
+            UIImageToMat(faceImage, faceImageMat);
+            cubeImages.push_back(faceImageMat);
+            cubeColors.push_back([faceColors cStringUsingEncoding:NSASCIIStringEncoding]);
+        }
+    }
+
+    // Skip if not enough face images (at least from one cube)
+    if (cubeImages.size() < 6) { return; }
+
+    _svmTrainer.LoadTrainingData(cubeImages, cubeColors);
+
+    NSString *outputPath = [documentsDirectory stringByAppendingPathComponent:@"svm-trained-on-device.yml"];
+    _svmTrainer.TrainSVM([documentsDirectory cStringUsingEncoding:NSASCIIStringEncoding], [outputPath cStringUsingEncoding:NSASCIIStringEncoding]);
 }
-
 
 - (IBAction)didPressStartButton:(UIButton *)sender {
     
