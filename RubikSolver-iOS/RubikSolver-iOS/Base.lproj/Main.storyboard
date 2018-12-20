@@ -46,7 +46,7 @@
                                 </constraints>
                                 <state key="normal" image="homescreen-solver-button"/>
                                 <connections>
-                                    <segue destination="uBe-qk-XN3" kind="show" id="HzH-qm-HMf"/>
+                                    <action selector="didPressStartButton:" destination="kZH-y1-jhW" eventType="touchUpInside" id="tAi-od-qoT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the cube to start solving!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O8-r6-jLM">
@@ -73,15 +73,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hm2-08-Foh"/>
+                    <connections>
+                        <segue destination="uBe-qk-XN3" kind="show" identifier="mainToCubeCaptureSegue" id="Dey-JX-n7b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUA-4Z-pb8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="10"/>
+            <point key="canvasLocation" x="-337" y="9"/>
         </scene>
         <!--Cube Capture View Controller-->
         <scene sceneID="fJP-ln-9Jc">
             <objects>
-                <viewController title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cubeCaptureViewControllerID" title="Cube Capture View Controller" id="uBe-qk-XN3" customClass="CubeCaptureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gNT-eZ-qfV"/>
                         <viewControllerLayoutGuide type="bottom" id="kuy-JT-lO3"/>

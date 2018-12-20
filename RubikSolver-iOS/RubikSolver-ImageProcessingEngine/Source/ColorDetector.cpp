@@ -9,6 +9,9 @@
 #include "stdafx.h"
 #include "ColorDetector.hpp"
 
+ColorDetector::ColorDetector() {}
+ColorDetector::~ColorDetector() {}
+
 /**
  Extracts the feature vector for the SVM (6 floats: B G R H S V)
  */
@@ -36,30 +39,12 @@ std::vector<std::vector<float>> ColorDetector::GetFaceFeatures(const cv::Mat &bg
     {
         for (int j = 0; j < bgrImage.cols; j++)
         {
-            auto bgrPixel = bgrImage.at<cv::Vec3b>(i, j);
-            auto hsvPixel = hsvImage.at<cv::Vec3b>(i, j);
-            
-            features.push_back(std::vector<float>
-                               {
-                                   static_cast<float>(bgrPixel.val[0]),
-                                   static_cast<float>(bgrPixel.val[1]),
-                                   static_cast<float>(bgrPixel.val[2]),
-                                   static_cast<float>(hsvPixel.val[0]),
-                                   static_cast<float>(hsvPixel.val[1]),
-                                   static_cast<float>(hsvPixel.val[2])
-                               });
+            auto featureArray = GetPixelFeatures(bgrImage, hsvImage, cv::Point(i, j));
+            features.push_back(featureArray);
         }
     }
     
     return features;
-}
-
-ColorDetector::ColorDetector()
-{
-}
-
-ColorDetector::~ColorDetector()
-{
 }
 
 /** Loads a pre-trained SVM classifier from a file

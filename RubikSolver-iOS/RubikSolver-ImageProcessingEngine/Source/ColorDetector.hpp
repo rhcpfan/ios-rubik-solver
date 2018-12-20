@@ -23,7 +23,8 @@ private:
 public:
     ColorDetector();
     ~ColorDetector();
-    
+
+    void TrainSVMFromImages(const std::vector<cv::Mat> &patchImages, const std::vector<std::string> colorNames);
     void LoadSVMFromFile(const std::string &filePath);
     std::vector<std::string> RecognizeColors(const cv::Mat &cubeFaceImage);
 };

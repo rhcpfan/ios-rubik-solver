@@ -45,8 +45,6 @@
 @property ColorDetector colorDetector;
 @property UIImage *capturedImage;
 
-- (void)saveMatImageToDocumentsFolder:(const cv::Mat&)image named:(NSString*)imageName;
-- (void)saveUIImageToDocumentsFolder:(UIImage*)image named:(NSString*)imageName;
 @property (weak, nonatomic) IBOutlet UIButton *captureImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *rejectButton;

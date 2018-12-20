@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4FDC603D1EDCB0E95329C9E2 /* libPods-RubikSolver-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 876A2818C43A6CEA2E9D1BF6 /* libPods-RubikSolver-iOS.a */; };
+		6BA2B32521CBD70400AA915E /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA2B32421CBD70400AA915E /* UIImage+Helpers.m */; };
+		6BA2B32821CBEB5B00AA915E /* SVMTrainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BA2B32721CBEB5B00AA915E /* SVMTrainer.cpp */; };
 		6BCA98F021C6ABCC00DA260C /* UIButton+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */; };
 		6BCA98F321C6AE0A00DA260C /* UIColor+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BCA98F221C6AE0A00DA260C /* UIColor+Helpers.m */; };
 		9464AD161E2BB48A003BE0C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD151E2BB48A003BE0C1 /* main.m */; };
@@ -19,8 +21,7 @@
 		9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD301E2BBD59003BE0C1 /* CubeCaptureViewController.mm */; };
 		9464AD341E2BBD72003BE0C1 /* ColorCorrectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.mm */; };
 		9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.mm */; };
-		9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */; };
-		9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */; };
+		9464AD421E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */ = {isa = PBXBuildFile; fileRef = 9464AD401E2BC1E1003BE0C1 /* color-classification-svm.yml */; };
 		9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */; };
 		9464AD4A1E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */; };
 		9464AD661E2BC73F003BE0C1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9464AD5D1E2BC73F003BE0C1 /* Accelerate.framework */; };
@@ -41,6 +42,10 @@
 /* Begin PBXFileReference section */
 		46351FAA7A8792AEBEEED39D /* Pods-RubikSolver-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4EF780DC172C0E21397363F3 /* Pods-RubikSolver-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RubikSolver-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6BA2B32321CBD70400AA915E /* UIImage+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
+		6BA2B32421CBD70400AA915E /* UIImage+Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helpers.m"; sourceTree = "<group>"; };
+		6BA2B32621CBEB5B00AA915E /* SVMTrainer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SVMTrainer.hpp; sourceTree = "<group>"; };
+		6BA2B32721CBEB5B00AA915E /* SVMTrainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVMTrainer.cpp; sourceTree = "<group>"; };
 		6BCA98EE21C6ABCC00DA260C /* UIButton+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Helpers.h"; sourceTree = "<group>"; };
 		6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Helpers.m"; sourceTree = "<group>"; };
 		6BCA98F121C6AE0A00DA260C /* UIColor+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helpers.h"; sourceTree = "<group>"; };
@@ -62,8 +67,7 @@
 		9464AD331E2BBD72003BE0C1 /* ColorCorrectionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ColorCorrectionViewController.mm; sourceTree = "<group>"; };
 		9464AD351E2BBD80003BE0C1 /* CubeSolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeSolverViewController.h; sourceTree = "<group>"; };
 		9464AD361E2BBD80003BE0C1 /* CubeSolverViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubeSolverViewController.mm; sourceTree = "<group>"; };
-		9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm.yml"; sourceTree = "<group>"; };
-		9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm-2.yml"; sourceTree = "<group>"; };
+		9464AD401E2BC1E1003BE0C1 /* color-classification-svm.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "color-classification-svm.yml"; sourceTree = "<group>"; };
 		9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorDetector.cpp; sourceTree = "<group>"; };
 		9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ColorDetector.hpp; sourceTree = "<group>"; };
 		9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeBasedCubeDetector.cpp; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				6BCA98EF21C6ABCC00DA260C /* UIButton+Helpers.m */,
 				6BCA98F121C6AE0A00DA260C /* UIColor+Helpers.h */,
 				6BCA98F221C6AE0A00DA260C /* UIColor+Helpers.m */,
+				6BA2B32321CBD70400AA915E /* UIImage+Helpers.h */,
+				6BA2B32421CBD70400AA915E /* UIImage+Helpers.m */,
 			);
 			path = "Custom Categories";
 			sourceTree = "<group>";
@@ -212,8 +218,7 @@
 		9464AD3A1E2BBFB5003BE0C1 /* Classifiers */ = {
 			isa = PBXGroup;
 			children = (
-				9464AD3F1E2BC1E1003BE0C1 /* color-classification-svm.yml */,
-				9464AD401E2BC1E1003BE0C1 /* color-classification-svm-2.yml */,
+				9464AD401E2BC1E1003BE0C1 /* color-classification-svm.yml */,
 			);
 			path = Classifiers;
 			sourceTree = "<group>";
@@ -221,6 +226,8 @@
 		9464AD3C1E2BBFB5003BE0C1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				6BA2B32721CBEB5B00AA915E /* SVMTrainer.cpp */,
+				6BA2B32621CBEB5B00AA915E /* SVMTrainer.hpp */,
 				9464AD451E2BC266003BE0C1 /* ColorDetector.cpp */,
 				9464AD461E2BC266003BE0C1 /* ColorDetector.hpp */,
 				9464AD471E2BC266003BE0C1 /* EdgeBasedCubeDetector.cpp */,
@@ -293,6 +300,7 @@
 				9464AD0D1E2BB48A003BE0C1 /* Sources */,
 				9464AD0E1E2BB48A003BE0C1 /* Frameworks */,
 				9464AD0F1E2BB48A003BE0C1 /* Resources */,
+				276513675F2B6E9BF1EFE5F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,7 +317,7 @@
 		9464AD091E2BB48A003BE0C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = HomeApps;
 				TargetAttributes = {
 					9464AD101E2BB48A003BE0C1 = {
@@ -345,14 +353,35 @@
 				9464AD241E2BB48A003BE0C1 /* LaunchScreen.storyboard in Resources */,
 				9464AD211E2BB48A003BE0C1 /* Assets.xcassets in Resources */,
 				9464AD1F1E2BB48A003BE0C1 /* Main.storyboard in Resources */,
-				9464AD411E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */,
-				9464AD421E2BC1E1003BE0C1 /* color-classification-svm-2.yml in Resources */,
+				9464AD421E2BC1E1003BE0C1 /* color-classification-svm.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		276513675F2B6E9BF1EFE5F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/CTAssetsPickerController/CTAssetsPickerController.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CTAssetsPickerController.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RubikSolver-iOS/Pods-RubikSolver-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F6E2458BBBEF096A60EBBC03 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,11 +411,13 @@
 				948EE1401E2EE358002C4F78 /* search.cpp in Sources */,
 				948EE13F1E2EE358002C4F78 /* facecube.cpp in Sources */,
 				948EE13E1E2EE358002C4F78 /* cubiecube.cpp in Sources */,
+				6BA2B32521CBD70400AA915E /* UIImage+Helpers.m in Sources */,
 				948EE13D1E2EE358002C4F78 /* coordcube.cpp in Sources */,
 				9464AD311E2BBD59003BE0C1 /* CubeCaptureViewController.mm in Sources */,
 				9464AD371E2BBD80003BE0C1 /* CubeSolverViewController.mm in Sources */,
 				9464AD191E2BB48A003BE0C1 /* AppDelegate.m in Sources */,
 				9464AD2E1E2BB6FF003BE0C1 /* MainViewController.mm in Sources */,
+				6BA2B32821CBEB5B00AA915E /* SVMTrainer.cpp in Sources */,
 				6BCA98F021C6ABCC00DA260C /* UIButton+Helpers.m in Sources */,
 				9464AD491E2BC266003BE0C1 /* ColorDetector.cpp in Sources */,
 				6BCA98F321C6AE0A00DA260C /* UIColor+Helpers.m in Sources */,
@@ -426,15 +457,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -457,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -474,15 +513,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -499,7 +546,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
