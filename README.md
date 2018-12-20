@@ -58,12 +58,10 @@ A full video demo of the application is available at: https://youtu.be/g3lciIABM
 
 ### Roadmap
 
-1. Since the color recognition **SVM is pre-trained using pictures of my cube**, it would be nice to include a way for the app to learn the colors of any other cube (train the liniar SVM on the device);
+1. Since the color recognition **SVM is pre-trained using pictures of my cube**, it would be nice to include a way for the app to learn the colors of any other cube (train the liniar SVM on the device); (DONE)
 2. A _Swift_ version of the application;
-3. A way to open and process photos of the cube from the photo gallery;
+3. A way to open and process photos of the cube from the photo gallery; (WIP)
 4. Any ideas?
-
-
 
 ### Why open source?
 
