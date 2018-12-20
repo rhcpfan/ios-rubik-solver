@@ -31,12 +31,7 @@
 @property (weak, nonatomic) NSMutableArray *faceColors;
 @property (weak, nonatomic) NSMutableArray *faceImages;
 
-- (void) setColorsFromArray: (NSInteger) faceIndex;
-
-/// Returns the UIColor representation from the cube face color string (ex. "R" -> [UIColor redColor])
-- (UIColor*) getUIColorFromString: (NSString*) stringRepresentation;
-- (void) removeAllBorders;
-- (void) addBorderToButton: (UIButton*) button;
+- (void)setColorsFromArray:(NSInteger)faceIndex;
 
 - (IBAction)didPressFirstPatchButton:(UIButton *)sender;
 - (IBAction)didPressSecondPatchButton:(UIButton *)sender;

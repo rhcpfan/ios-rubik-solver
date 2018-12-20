@@ -8,11 +8,17 @@ DEPENDENCIES:
   - CTAssetsPickerController
   - OpenCV
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CTAssetsPickerController
+    - OpenCV
+    - PureLayout
+
 SPEC CHECKSUMS:
   CTAssetsPickerController: b1d1d50ab87cf6b8b13531de5f4530482e7e53ed
   OpenCV: 41c4250e2b06a394d6fbb634b5fa622cdd846018
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
 
-PODFILE CHECKSUM: 70af9fcb18a77e431688969a1ddab58bf896b649
+PODFILE CHECKSUM: 0d47452f8bdf60f2848ef25218f628867fe6d167
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.5.3
